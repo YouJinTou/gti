@@ -11,6 +11,29 @@ public:
 public:
 	Board();
 	I256 getRedPawns() const;
+	I256 getRedKnights() const;
+	I256 getRedBishops() const;
+	I256 getRedRooks() const;
+	I256 getRedQueens() const;
+	I256 getRedKing() const;
+	I256 getBluePawns() const;
+	I256 getBlueKnights() const;
+	I256 getBlueBishops() const;
+	I256 getBlueRooks() const;
+	I256 getBlueQueens() const;
+	I256 getBlueKing() const;
+	I256 getYellowPawns() const;
+	I256 getYellowKnights() const;
+	I256 getYellowBishops() const;
+	I256 getYellowRooks() const;
+	I256 getYellowQueens() const;
+	I256 getYellowKing() const;
+	I256 getGreenPawns() const;
+	I256 getGreenKnights() const;
+	I256 getGreenBishops() const;
+	I256 getGreenRooks() const;
+	I256 getGreenQueens() const;
+	I256 getGreenKing() const;
 private:
 	typedef boost::multiprecision::uint256_t I256;
 private:

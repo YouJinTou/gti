@@ -1,11 +1,11 @@
 #include "Board.hpp"
 
 const std::string Board::RED_PAWNS{ "763254615079690740002692367037751644185114211243786240" };
-const std::string Board::RED_KNIGHTS{ "12057388507979949075180399869909334912161443479552" };
-const std::string Board::RED_BISHOPS{ "6028694253989974537590199934954667456080721739776" };
-const std::string Board::RED_ROOKS{ "23429698123461037407452822474482912158859168579584" };
-const std::string Board::RED_QUEENS{ "2923003274661805836407369665432566039311865085952" };
-const std::string Board::RED_KING{ "1461501637330902918203684832716283019655932542976" };
+const std::string Board::RED_KNIGHTS{ "3236630582308757268852828921341452995802777026051767795712" };
+const std::string Board::RED_BISHOPS{ "1765434863077503964828815775277156179528787468755509706752" };
+const std::string Board::RED_ROOKS{ "6326141592694389207303256528076476309978155096373909782528" };
+const std::string Board::RED_QUEENS{ "784637716923335095479473677900958302012794430558004314112" };
+const std::string Board::RED_KING{ "392318858461667547739736838950479151006397215279002157056" };
 const std::string Board::BLUE_PAWNS{ "5709339241236512651226016559472751952852418560" };
 const std::string Board::BLUE_KNIGHTS{ "696898287454081973173581491830620002713600" };
 const std::string Board::BLUE_BISHOPS{ "42535295865126979339478742962368675840" };
@@ -56,4 +56,119 @@ Board::Board() :
 I256 Board::getRedPawns() const
 {
 	return rPawns;
+}
+
+I256 Board::getRedKnights() const
+{
+	return rKnights;
+}
+
+I256 Board::getRedBishops() const
+{
+	return rBishops;
+}
+
+I256 Board::getRedRooks() const
+{
+	return rRooks;
+}
+
+I256 Board::getRedQueens() const
+{
+	return rQueens;
+}
+
+I256 Board::getRedKing() const
+{
+	return rKing;
+}
+
+I256 Board::getBluePawns() const
+{
+	return bPawns;
+}
+
+I256 Board::getBlueKnights() const
+{
+	return bKnights;
+}
+
+I256 Board::getBlueBishops() const
+{
+	return bBishops;
+}
+
+I256 Board::getBlueRooks() const
+{
+	return bRooks;
+}
+
+I256 Board::getBlueQueens() const
+{
+	return bQueens;
+}
+
+I256 Board::getBlueKing() const
+{
+	return bKing;
+}
+
+I256 Board::getYellowPawns() const
+{
+	return yPawns;
+}
+
+I256 Board::getYellowKnights() const
+{
+	return yKnights;
+}
+
+I256 Board::getYellowBishops() const
+{
+	return yBishops;
+}
+
+I256 Board::getYellowRooks() const
+{
+	return yRooks;
+}
+
+I256 Board::getYellowQueens() const
+{
+	return yQueens;
+}
+
+I256 Board::getYellowKing() const
+{
+	return yKing;
+}
+
+I256 Board::getGreenPawns() const
+{
+	return gPawns;
+}
+
+I256 Board::getGreenKnights() const
+{
+	return gKnights;
+}
+
+I256 Board::getGreenBishops() const
+{
+	return gBishops;
+}
+
+I256 Board::getGreenRooks() const
+{
+	return gRooks;
+}
+
+I256 Board::getGreenQueens() const
+{
+	return gQueens;
+}
+
+I256 Board::getGreenKing() const
+{
+	return gKing;
 }
