@@ -52,3 +52,8 @@ Board::Board() :
 	gKing{ GREEN_KING }
 {
 }
+
+I256 Board::getRedPawns() const
+{
+	return rPawns;
+}

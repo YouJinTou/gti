@@ -6,7 +6,11 @@
 class Board 
 {
 public:
+	static constexpr int TOTAL_SQUARES = 196;
+	static constexpr int SQUARES_PER_SIDE = 14;
+public:
 	Board();
+	I256 getRedPawns() const;
 private:
 	typedef boost::multiprecision::uint256_t I256;
 private:
