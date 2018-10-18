@@ -1,6 +1,6 @@
 #include "Utils.hpp"
 
-void Utils::PrintBinary(I256 n)
+void Utils::PrintBinary(I256 n) const
 {
 	for (int i = 256; i >= 0; i--)
 	{

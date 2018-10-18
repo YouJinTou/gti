@@ -8,7 +8,7 @@ class Utils
 private:
 	typedef boost::multiprecision::uint256_t I256;
 public:
-	void PrintBinary(I256 n);
+	void PrintBinary(I256 n) const;
 };
 
 #endif // !UTILS_HPP
