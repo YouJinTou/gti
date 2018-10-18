@@ -1,9 +1,12 @@
 #include <iostream>
 #include "Board.hpp"
+#include "BoardDrawer.hpp"
 
 int main() 
 {
-	Board b = Board();
+	BoardDrawer bd{ Board() };
+
+	bd.DrawBoard();
 
 	std::getchar();
 
