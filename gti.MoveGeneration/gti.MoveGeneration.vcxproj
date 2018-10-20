@@ -118,7 +118,7 @@
   <ItemGroup>
     <ClInclude Include="Board.hpp" />
     <ClInclude Include="BoardDrawer.hpp" />
-    <ClInclude Include="Consants.hpp" />
+    <ClInclude Include="Constants.hpp" />
     <ClInclude Include="Typedefs.hpp" />
     <ClInclude Include="Utils.hpp" />
   </ItemGroup>

@@ -1,14 +1,12 @@
 #ifndef CONSTANTS_HPP
 #define CONSTANTS_HPP
 
-#include <windows.h>
-
-#include "Typedefs.hpp"
-
-class Constants
+enum PlayerColor
 {
-public:
-	
+	Red,
+	Blue,
+	Yellow,
+	Green
 };
 
 #endif // !CONSTANTS_HPP

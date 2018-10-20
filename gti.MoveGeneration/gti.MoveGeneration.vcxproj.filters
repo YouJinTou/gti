@@ -27,7 +27,7 @@
     <ClInclude Include="BoardDrawer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Consants.hpp">
+    <ClInclude Include="Constants.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
