@@ -1,6 +1,8 @@
 #ifndef BOARD_HPP
 #define BOARD_HPP
 
+#include <vector>
+
 #include "Constants.hpp"
 #include "Typedefs.hpp"
 
@@ -37,6 +39,7 @@ public:
 	I256 GetGreenQueens() const;
 	I256 GetGreenKing() const;
 	I256 GetCorners() const;
+	std::vector<I256> GetNextPlayerMoves() const;
 private:
 	const I256 RED_PAWNS_INITIAL{ "763254615079690740002692367037751644185114211243786240" };
 	const I256 RED_KNIGHTS_INITIAL{ "3236630582308757268852828921341452995802777026051767795712" };
@@ -89,6 +92,13 @@ private:
 	I256 gRooks;
 	I256 gQueens;
 	I256 gKing;
+private:
+	std::vector<I256> GetPawnMoves() const;
+	std::vector<I256> GetKnightMoves() const;
+	std::vector<I256> GetBishopMoves() const;
+	std::vector<I256> GetRookMoves() const;
+	std::vector<I256> GetQueenMoves() const;
+	std::vector<I256> GetKingMoves() const;
 };
 
 #endif // !BOARD_HPP

@@ -4,7 +4,10 @@
 
 int main() 
 {
-	BoardDrawer bd{ Board() };
+	Board board{};
+	BoardDrawer bd{ board };
+
+	board.GetNextPlayerMoves();
 
 	bd.DrawBoard();
 

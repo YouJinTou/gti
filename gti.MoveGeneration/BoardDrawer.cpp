@@ -11,30 +11,30 @@ BoardDrawer::BoardDrawer(const Board& board) :
 
 void BoardDrawer::DrawBoard() const
 {
-	auto rPawns = board.getRedPawns();
-	auto rKnights = board.getRedKnights();
-	auto rBishops = board.getRedBishops();
-	auto rRooks = board.getRedRooks();
-	auto rQueens = board.getRedQueens();
-	auto rKing = board.getRedKing();
-	auto bPawns = board.getBluePawns();
-	auto bKnights = board.getBlueKnights();
-	auto bBishops = board.getBlueBishops();
-	auto bRooks = board.getBlueRooks();
-	auto bQueens = board.getBlueQueens();
-	auto bKing = board.getBlueKing();
-	auto yPawns = board.getYellowPawns();
-	auto yKnights = board.getYellowKnights();
-	auto yBishops = board.getYellowBishops();
-	auto yRooks = board.getYellowRooks();
-	auto yQueens = board.getYellowQueens();
-	auto yKing = board.getYellowKing();
-	auto gPawns = board.getGreenPawns();
-	auto gKnights = board.getGreenKnights();
-	auto gBishops = board.getGreenBishops();
-	auto gRooks = board.getGreenRooks();
-	auto gQueens = board.getGreenQueens();
-	auto gKing = board.getGreenKing();
+	auto rPawns = board.GetRedPawns();
+	auto rKnights = board.GetRedKnights();
+	auto rBishops = board.GetRedBishops();
+	auto rRooks = board.GetRedRooks();
+	auto rQueens = board.GetRedQueens();
+	auto rKing = board.GetRedKing();
+	auto bPawns = board.GetBluePawns();
+	auto bKnights = board.GetBlueKnights();
+	auto bBishops = board.GetBlueBishops();
+	auto bRooks = board.GetBlueRooks();
+	auto bQueens = board.GetBlueQueens();
+	auto bKing = board.GetBlueKing();
+	auto yPawns = board.GetYellowPawns();
+	auto yKnights = board.GetYellowKnights();
+	auto yBishops = board.GetYellowBishops();
+	auto yRooks = board.GetYellowRooks();
+	auto yQueens = board.GetYellowQueens();
+	auto yKing = board.GetYellowKing();
+	auto gPawns = board.GetGreenPawns();
+	auto gKnights = board.GetGreenKnights();
+	auto gBishops = board.GetGreenBishops();
+	auto gRooks = board.GetGreenRooks();
+	auto gQueens = board.GetGreenQueens();
+	auto gKing = board.GetGreenKing();
 
 	for (size_t i = 0; i < board.TOTAL_SQUARES; i++)
 	{
@@ -115,7 +115,7 @@ bool BoardDrawer::TryDrawPlayerSquare(
 void BoardDrawer::DrawEmptySquare(size_t i) const
 {
 	auto mask = I256{ 1 } << i;
-	auto corners = board.getCorners();
+	auto corners = board.GetCorners();
 
 	if ((mask & corners) == mask)
 	{
