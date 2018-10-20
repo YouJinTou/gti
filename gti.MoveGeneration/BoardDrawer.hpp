@@ -15,7 +15,8 @@ private:
 	const Board& board;
 private:
 	void SetColor(WORD color) const;
-	bool TryDrawSquare(size_t i, WORD color, I256 pawns, I256 knights, I256 bishops, I256 rooks, I256 queens, I256 king) const;
+	bool TryDrawPlayerSquare(size_t i, WORD color, I256 pawns, I256 knights, I256 bishops, I256 rooks, I256 queens, I256 king) const;
+	void DrawEmptySquare(size_t i) const;
 };
 
 #endif // !BOARD_DRAWER_HPP

@@ -2,6 +2,7 @@
 #include <windows.h>
 
 #include "BoardDrawer.hpp"
+#include "Constants.hpp"
 #include "Utils.hpp"
 
 BoardDrawer::BoardDrawer(const Board& board) :
@@ -17,29 +18,24 @@ void BoardDrawer::DrawBoard() const
 	auto rRooks = board.getRedRooks();
 	auto rQueens = board.getRedQueens();
 	auto rKing = board.getRedKing();
-	WORD red = 4;
 	auto bPawns = board.getBluePawns();
 	auto bKnights = board.getBlueKnights();
 	auto bBishops = board.getBlueBishops();
 	auto bRooks = board.getBlueRooks();
 	auto bQueens = board.getBlueQueens();
 	auto bKing = board.getBlueKing();
-	WORD blue = 1;
 	auto yPawns = board.getYellowPawns();
 	auto yKnights = board.getYellowKnights();
 	auto yBishops = board.getYellowBishops();
 	auto yRooks = board.getYellowRooks();
 	auto yQueens = board.getYellowQueens();
 	auto yKing = board.getYellowKing();
-	WORD yellow = 14;
 	auto gPawns = board.getGreenPawns();
 	auto gKnights = board.getGreenKnights();
 	auto gBishops = board.getGreenBishops();
 	auto gRooks = board.getGreenRooks();
 	auto gQueens = board.getGreenQueens();
 	auto gKing = board.getGreenKing();
-	WORD green = 2;
-	WORD white = 15;
 
 	for (size_t i = 0; i < board.TOTAL_SQUARES; i++)
 	{
@@ -49,16 +45,14 @@ void BoardDrawer::DrawBoard() const
 		}
 
 		bool squareDrawn =
-			TryDrawSquare(i, red, rPawns, rKnights, rBishops, rRooks, rQueens, rKing) ||
-			TryDrawSquare(i, blue, bPawns, bKnights, bBishops, bRooks, bQueens, bKing) ||
-			TryDrawSquare(i, yellow, yPawns, yKnights, yBishops, yRooks, yQueens, yKing) ||
-			TryDrawSquare(i, green, gPawns, gKnights, gBishops, gRooks, gQueens, gKing);
-
+			TryDrawPlayerSquare(i, Constants::CONSOLE_RED_COLOR, rPawns, rKnights, rBishops, rRooks, rQueens, rKing) ||
+			TryDrawPlayerSquare(i, Constants::CONSOLE_BLUE_COLOR, bPawns, bKnights, bBishops, bRooks, bQueens, bKing) ||
+			TryDrawPlayerSquare(i, Constants::CONSOLE_YELLOW_COLOR, yPawns, yKnights, yBishops, yRooks, yQueens, yKing) ||
+			TryDrawPlayerSquare(i, Constants::CONSOLE_GREEN_COLOR, gPawns, gKnights, gBishops, gRooks, gQueens, gKing);
+	
 		if (!squareDrawn)
 		{
-			SetColor(white);
-
-			std::cout << i << "\t";
+			DrawEmptySquare(i);
 		}
 	}
 }
@@ -70,7 +64,7 @@ void BoardDrawer::SetColor(WORD color) const
 	SetConsoleTextAttribute(hConsole, color);
 }
 
-bool BoardDrawer::TryDrawSquare(
+bool BoardDrawer::TryDrawPlayerSquare(
 	size_t i,
 	WORD color,
 	I256 pawns, 
@@ -117,4 +111,21 @@ bool BoardDrawer::TryDrawSquare(
 	}
 
 	return false;
+}
+
+void BoardDrawer::DrawEmptySquare(size_t i) const
+{
+	auto mask = I256{ 1 } << i;
+	auto corners = board.getCorners();
+
+	if ((mask & corners) == mask)
+	{
+		SetColor(Constants::CONSOLE_GRAY_COLOR);
+	}
+	else
+	{
+		SetColor(Constants::CONSOLE_WHITE_COLOR);
+	}
+
+	std::cout << i << "\t";
 }

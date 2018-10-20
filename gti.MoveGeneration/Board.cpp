@@ -147,3 +147,8 @@ I256 Board::getGreenKing() const
 {
 	return gKing;
 }
+
+I256 Board::getCorners() const
+{
+	return CORNERS;
+}
