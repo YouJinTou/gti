@@ -2,6 +2,7 @@
 #include <windows.h>
 
 #include "BoardDrawer.hpp"
+#include "Utils.hpp"
 
 BoardDrawer::BoardDrawer(const Board& board) :
 	board(board)
@@ -30,7 +31,7 @@ void BoardDrawer::DrawBoard() const
 	auto yRooks = board.getYellowRooks();
 	auto yQueens = board.getYellowQueens();
 	auto yKing = board.getYellowKing();
-	WORD yellow = 4;
+	WORD yellow = 14;
 	auto gPawns = board.getGreenPawns();
 	auto gKnights = board.getGreenKnights();
 	auto gBishops = board.getGreenBishops();
@@ -51,7 +52,7 @@ void BoardDrawer::DrawBoard() const
 			TryDrawSquare(i, red, rPawns, rKnights, rBishops, rRooks, rQueens, rKing) ||
 			TryDrawSquare(i, blue, bPawns, bKnights, bBishops, bRooks, bQueens, bKing) ||
 			TryDrawSquare(i, yellow, yPawns, yKnights, yBishops, yRooks, yQueens, yKing) ||
-			TryDrawSquare(i, green, gPawns, gKnights, gBishops, gRooks, gQueens, yKing);
+			TryDrawSquare(i, green, gPawns, gKnights, gBishops, gRooks, gQueens, gKing);
 
 		if (!squareDrawn)
 		{
