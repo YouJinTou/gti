@@ -2,10 +2,9 @@
 #include <windows.h>
 
 #include "BoardDrawer.hpp"
-#include "Utils.hpp"
 
 BoardDrawer::BoardDrawer(const Board& board) :
-	board(board)
+	board{ board }
 {
 }
 
@@ -48,7 +47,7 @@ void BoardDrawer::DrawBoard() const
 			TryDrawPlayerSquare(i, BLUE, bPawns, bKnights, bBishops, bRooks, bQueens, bKing) ||
 			TryDrawPlayerSquare(i, YELLOW, yPawns, yKnights, yBishops, yRooks, yQueens, yKing) ||
 			TryDrawPlayerSquare(i, GREEN, gPawns, gKnights, gBishops, gRooks, gQueens, gKing);
-	
+
 		if (!squareDrawn)
 		{
 			DrawEmptySquare(i);
@@ -66,11 +65,11 @@ void BoardDrawer::SetColor(WORD color) const
 bool BoardDrawer::TryDrawPlayerSquare(
 	size_t i,
 	WORD color,
-	I256 pawns, 
-	I256 knights, 
-	I256 bishops, 
-	I256 rooks, 
-	I256 queens, 
+	I256 pawns,
+	I256 knights,
+	I256 bishops,
+	I256 rooks,
+	I256 queens,
 	I256 king) const
 {
 	SetColor(color);
