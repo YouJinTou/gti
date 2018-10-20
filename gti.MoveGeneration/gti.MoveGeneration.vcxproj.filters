@@ -27,6 +27,9 @@
     <ClInclude Include="BoardDrawer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Consants.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Board.cpp">

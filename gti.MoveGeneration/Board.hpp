@@ -1,6 +1,7 @@
 #ifndef BOARD_HPP
 #define BOARD_HPP
 
+#include "Constants.hpp"
 #include "Typedefs.hpp"
 
 class Board 
@@ -10,31 +11,32 @@ public:
 	static constexpr int SQUARES_PER_SIDE = 14;
 public:
 	Board();
-	I256 getRedPawns() const;
-	I256 getRedKnights() const;
-	I256 getRedBishops() const;
-	I256 getRedRooks() const;
-	I256 getRedQueens() const;
-	I256 getRedKing() const;
-	I256 getBluePawns() const;
-	I256 getBlueKnights() const;
-	I256 getBlueBishops() const;
-	I256 getBlueRooks() const;
-	I256 getBlueQueens() const;
-	I256 getBlueKing() const;
-	I256 getYellowPawns() const;
-	I256 getYellowKnights() const;
-	I256 getYellowBishops() const;
-	I256 getYellowRooks() const;
-	I256 getYellowQueens() const;
-	I256 getYellowKing() const;
-	I256 getGreenPawns() const;
-	I256 getGreenKnights() const;
-	I256 getGreenBishops() const;
-	I256 getGreenRooks() const;
-	I256 getGreenQueens() const;
-	I256 getGreenKing() const;
-	I256 getCorners() const;
+	PlayerColor ToMove() const;
+	I256 GetRedPawns() const;
+	I256 GetRedKnights() const;
+	I256 GetRedBishops() const;
+	I256 GetRedRooks() const;
+	I256 GetRedQueens() const;
+	I256 GetRedKing() const;
+	I256 GetBluePawns() const;
+	I256 GetBlueKnights() const;
+	I256 GetBlueBishops() const;
+	I256 GetBlueRooks() const;
+	I256 GetBlueQueens() const;
+	I256 GetBlueKing() const;
+	I256 GetYellowPawns() const;
+	I256 GetYellowKnights() const;
+	I256 GetYellowBishops() const;
+	I256 GetYellowRooks() const;
+	I256 GetYellowQueens() const;
+	I256 GetYellowKing() const;
+	I256 GetGreenPawns() const;
+	I256 GetGreenKnights() const;
+	I256 GetGreenBishops() const;
+	I256 GetGreenRooks() const;
+	I256 GetGreenQueens() const;
+	I256 GetGreenKing() const;
+	I256 GetCorners() const;
 private:
 	const I256 RED_PAWNS_INITIAL{ "763254615079690740002692367037751644185114211243786240" };
 	const I256 RED_KNIGHTS_INITIAL{ "3236630582308757268852828921341452995802777026051767795712" };
@@ -62,6 +64,7 @@ private:
 	const I256 GREEN_KING_INITIAL{ "2596148429267413814265248164610048" };
 	const I256 CORNERS{ "87927700851497958793422690461569715349321877590330545666055" };
 private:
+	PlayerColor toMove;
 	I256 rPawns;
 	I256 rKnights;
 	I256 rBishops;

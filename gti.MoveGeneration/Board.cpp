@@ -28,127 +28,132 @@ Board::Board() :
 {
 }
 
-I256 Board::getRedPawns() const
+PlayerColor Board::ToMove() const
+{
+	return toMove;
+}
+
+I256 Board::GetRedPawns() const
 {
 	return rPawns;
 }
 
-I256 Board::getRedKnights() const
+I256 Board::GetRedKnights() const
 {
 	return rKnights;
 }
 
-I256 Board::getRedBishops() const
+I256 Board::GetRedBishops() const
 {
 	return rBishops;
 }
 
-I256 Board::getRedRooks() const
+I256 Board::GetRedRooks() const
 {
 	return rRooks;
 }
 
-I256 Board::getRedQueens() const
+I256 Board::GetRedQueens() const
 {
 	return rQueens;
 }
 
-I256 Board::getRedKing() const
+I256 Board::GetRedKing() const
 {
 	return rKing;
 }
 
-I256 Board::getBluePawns() const
+I256 Board::GetBluePawns() const
 {
 	return bPawns;
 }
 
-I256 Board::getBlueKnights() const
+I256 Board::GetBlueKnights() const
 {
 	return bKnights;
 }
 
-I256 Board::getBlueBishops() const
+I256 Board::GetBlueBishops() const
 {
 	return bBishops;
 }
 
-I256 Board::getBlueRooks() const
+I256 Board::GetBlueRooks() const
 {
 	return bRooks;
 }
 
-I256 Board::getBlueQueens() const
+I256 Board::GetBlueQueens() const
 {
 	return bQueens;
 }
 
-I256 Board::getBlueKing() const
+I256 Board::GetBlueKing() const
 {
 	return bKing;
 }
 
-I256 Board::getYellowPawns() const
+I256 Board::GetYellowPawns() const
 {
 	return yPawns;
 }
 
-I256 Board::getYellowKnights() const
+I256 Board::GetYellowKnights() const
 {
 	return yKnights;
 }
 
-I256 Board::getYellowBishops() const
+I256 Board::GetYellowBishops() const
 {
 	return yBishops;
 }
 
-I256 Board::getYellowRooks() const
+I256 Board::GetYellowRooks() const
 {
 	return yRooks;
 }
 
-I256 Board::getYellowQueens() const
+I256 Board::GetYellowQueens() const
 {
 	return yQueens;
 }
 
-I256 Board::getYellowKing() const
+I256 Board::GetYellowKing() const
 {
 	return yKing;
 }
 
-I256 Board::getGreenPawns() const
+I256 Board::GetGreenPawns() const
 {
 	return gPawns;
 }
 
-I256 Board::getGreenKnights() const
+I256 Board::GetGreenKnights() const
 {
 	return gKnights;
 }
 
-I256 Board::getGreenBishops() const
+I256 Board::GetGreenBishops() const
 {
 	return gBishops;
 }
 
-I256 Board::getGreenRooks() const
+I256 Board::GetGreenRooks() const
 {
 	return gRooks;
 }
 
-I256 Board::getGreenQueens() const
+I256 Board::GetGreenQueens() const
 {
 	return gQueens;
 }
 
-I256 Board::getGreenKing() const
+I256 Board::GetGreenKing() const
 {
 	return gKing;
 }
 
-I256 Board::getCorners() const
+I256 Board::GetCorners() const
 {
-	return CORNERS;
+	return CORNERS
 }
