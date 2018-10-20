@@ -12,6 +12,13 @@ public:
 	BoardDrawer(const Board& board);
 	void DrawBoard() const;
 private:
+	static constexpr WORD RED = 4;
+	static constexpr WORD BLUE = 1;
+	static constexpr WORD GREEN = 2;
+	static constexpr WORD YELLOW = 14;
+	static constexpr WORD WHITE = 15;
+	static constexpr WORD GRAY = 8;
+private:
 	const Board& board;
 private:
 	void SetColor(WORD color) const;

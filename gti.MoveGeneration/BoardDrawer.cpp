@@ -2,7 +2,6 @@
 #include <windows.h>
 
 #include "BoardDrawer.hpp"
-#include "Constants.hpp"
 #include "Utils.hpp"
 
 BoardDrawer::BoardDrawer(const Board& board) :
@@ -45,10 +44,10 @@ void BoardDrawer::DrawBoard() const
 		}
 
 		bool squareDrawn =
-			TryDrawPlayerSquare(i, Constants::CONSOLE_RED_COLOR, rPawns, rKnights, rBishops, rRooks, rQueens, rKing) ||
-			TryDrawPlayerSquare(i, Constants::CONSOLE_BLUE_COLOR, bPawns, bKnights, bBishops, bRooks, bQueens, bKing) ||
-			TryDrawPlayerSquare(i, Constants::CONSOLE_YELLOW_COLOR, yPawns, yKnights, yBishops, yRooks, yQueens, yKing) ||
-			TryDrawPlayerSquare(i, Constants::CONSOLE_GREEN_COLOR, gPawns, gKnights, gBishops, gRooks, gQueens, gKing);
+			TryDrawPlayerSquare(i, RED, rPawns, rKnights, rBishops, rRooks, rQueens, rKing) ||
+			TryDrawPlayerSquare(i, BLUE, bPawns, bKnights, bBishops, bRooks, bQueens, bKing) ||
+			TryDrawPlayerSquare(i, YELLOW, yPawns, yKnights, yBishops, yRooks, yQueens, yKing) ||
+			TryDrawPlayerSquare(i, GREEN, gPawns, gKnights, gBishops, gRooks, gQueens, gKing);
 	
 		if (!squareDrawn)
 		{
@@ -120,11 +119,11 @@ void BoardDrawer::DrawEmptySquare(size_t i) const
 
 	if ((mask & corners) == mask)
 	{
-		SetColor(Constants::CONSOLE_GRAY_COLOR);
+		SetColor(GRAY);
 	}
 	else
 	{
-		SetColor(Constants::CONSOLE_WHITE_COLOR);
+		SetColor(WHITE);
 	}
 
 	std::cout << i << "\t";
