@@ -43,15 +43,15 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\binaries.odt">
+    <None Include="binaries.odt">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="..\board.ods">
+    <None Include="board.ods">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\board.PNG">
+    <Image Include="board.PNG">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
