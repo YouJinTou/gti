@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gti.MoveGeneration", "gti.MoveGeneration\gti.MoveGeneration.vcxproj", "{DB16433A-9F5C-4722-917C-900DE50F7956}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gti", "gti\gti.vcxproj", "{DB16433A-9F5C-4722-917C-900DE50F7956}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gti.Tests", "gti.Tests\gti.Tests.vcxproj", "{2956D32E-B72B-40FF-B0B1-85DC54A02CD6}"
 EndProject
