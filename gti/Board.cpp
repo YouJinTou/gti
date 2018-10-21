@@ -30,6 +30,7 @@ const I256 Board::RED_PROMOTION_RANK{ "5191979945884770571180122153418752" };
 const I256 Board::FILE_A{ "6130356330720069109526498856822478340819000617190047745" };
 const I256 Board::FILE_N{ "50219879061258806145241078635089742567989253056020871127040" };
 const I256 Board::RANK_1{ "100427497784023428665939197383214061420903212154935817797632" };
+const I256 Board::RANK_4{ "22834569286720449932986229528799881659529822208" };
 const I256 Board::RANK_14{ "16383" };
 
 Board::Board() :
@@ -234,4 +235,25 @@ I256 Board::GetEmptySquares() const
 		gRooks ^
 		gQueens ^
 		gKing;
+}
+
+I256 Board::GetOthersPieces() const
+{
+	switch (toMove)
+	{
+	case Red:
+		return GetBlue() | GetYellow() | GetGreen();
+		break;
+	case Blue:
+		return GetRed() | GetYellow() | GetGreen();
+		break;
+	case Yellow:
+		return GetRed() | GetBlue() | GetGreen();
+		break;
+	case Green:
+		return GetRed() | GetBlue() | GetYellow();
+		break;
+	default:
+		throw "Invalid player to move when calling GetOthersPieces().";
+	}
 }

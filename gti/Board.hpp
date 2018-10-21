@@ -40,6 +40,7 @@ public:
 	static const I256 FILE_A;
 	static const I256 FILE_N;
 	static const I256 RANK_1;
+	static const I256 RANK_4;
 	static const I256 RANK_14;
 public:
 	Board();
@@ -73,6 +74,7 @@ public:
 	I256 GetGreenQueens() const;
 	I256 GetGreenKing() const;
 	I256 GetEmptySquares() const;
+	I256 GetOthersPieces() const;
 private:
 	PlayerColor toMove;
 	I256 rPawns;
