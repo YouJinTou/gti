@@ -40,24 +40,28 @@ public:
 public:
 	Board();
 	PlayerColor ToMove() const;
+	I256 GetRed() const;
 	I256 GetRedPawns() const;
 	I256 GetRedKnights() const;
 	I256 GetRedBishops() const;
 	I256 GetRedRooks() const;
 	I256 GetRedQueens() const;
 	I256 GetRedKing() const;
+	I256 GetBlue() const;
 	I256 GetBluePawns() const;
 	I256 GetBlueKnights() const;
 	I256 GetBlueBishops() const;
 	I256 GetBlueRooks() const;
 	I256 GetBlueQueens() const;
 	I256 GetBlueKing() const;
+	I256 GetYellow() const;
 	I256 GetYellowPawns() const;
 	I256 GetYellowKnights() const;
 	I256 GetYellowBishops() const;
 	I256 GetYellowRooks() const;
 	I256 GetYellowQueens() const;
 	I256 GetYellowKing() const;
+	I256 GetGreen() const;
 	I256 GetGreenPawns() const;
 	I256 GetGreenKnights() const;
 	I256 GetGreenBishops() const;

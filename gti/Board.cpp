@@ -60,6 +60,11 @@ PlayerColor Board::ToMove() const
 	return toMove;
 }
 
+I256 Board::GetRed() const
+{
+	return rPawns | rKnights | rBishops | rRooks | rQueens | rKing;
+}
+
 I256 Board::GetRedPawns() const
 {
 	return rPawns;
@@ -88,6 +93,11 @@ I256 Board::GetRedQueens() const
 I256 Board::GetRedKing() const
 {
 	return rKing;
+}
+
+I256 Board::GetBlue() const
+{
+	return bPawns | bKnights | bBishops | bRooks | bQueens | bKing;
 }
 
 I256 Board::GetBluePawns() const
@@ -120,6 +130,11 @@ I256 Board::GetBlueKing() const
 	return bKing;
 }
 
+I256 Board::GetYellow() const
+{
+	return yPawns | yKnights | yBishops | yRooks | yQueens | yKing;
+}
+
 I256 Board::GetYellowPawns() const
 {
 	return yPawns;
@@ -148,6 +163,11 @@ I256 Board::GetYellowQueens() const
 I256 Board::GetYellowKing() const
 {
 	return yKing;
+}
+
+I256 Board::GetGreen() const
+{
+	return gPawns | gKnights | gBishops | gRooks | gQueens | gKing;
 }
 
 I256 Board::GetGreenPawns() const
