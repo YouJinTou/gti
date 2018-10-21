@@ -12,8 +12,6 @@ public:
 	MoveGenerator(const Board& board);
 	std::vector<I256> GetMoves() const;
 private:
-	const I256 RED_PROMOTION_RANK{ "5191979945884770571180122153418752" };
-private:
 	const Board& board;
 private:
 	std::vector<I256> GetPawnMoves() const;
