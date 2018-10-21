@@ -47,10 +47,32 @@ std::vector<I256> MoveGenerator::GetRedPawnMoves() const
 	auto pawns = board.GetRedPawns();
 	auto emptySquares = board.GetEmptySquares();
 	auto oneForwardMoves = (pawns >> 14) & emptySquares & ~RED_PROMOTION_RANK;
-	auto twoForwardMoves = 
+	auto twoForwardMoves =
 		(pawns >> 28) & emptySquares & (emptySquares >> 14) & Board::RED_PAWNS_INITIAL;
+	auto leftCaptures =
+		(pawns >> 15) &
+		(board.GetBlue() | board.GetYellow() | board.GetGreen() & ~RED_PROMOTION_RANK);
+	auto rightCaptures =
+		(pawns >> 13) &
+		(board.GetBlue() | board.GetYellow() | board.GetGreen() & ~RED_PROMOTION_RANK);
+	auto forwardPromotions = (pawns >> 14) & emptySquares & RED_PROMOTION_RANK;
+	auto leftCapturePromotions =
+		(pawns >> 15) &
+		(board.GetBlue() | board.GetYellow() | board.GetGreen()) & RED_PROMOTION_RANK;
+	auto rightCapturePromotions =
+		(pawns >> 13) &
+		(board.GetBlue() | board.GetYellow() | board.GetGreen()) & RED_PROMOTION_RANK;
 
-	return std::vector<I256>{ oneForwardMoves, twoForwardMoves };
+	return std::vector<I256>
+	{
+		oneForwardMoves,
+			twoForwardMoves,
+			leftCaptures,
+			rightCaptures,
+			forwardPromotions,
+			leftCapturePromotions,
+			rightCapturePromotions
+	};
 }
 
 std::vector<I256> MoveGenerator::GetBluePawnMoves() const
