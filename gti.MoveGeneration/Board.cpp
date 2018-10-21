@@ -157,3 +157,34 @@ I256 Board::GetCorners() const
 {
 	return CORNERS;
 }
+
+I256 Board::GetEmptySquares() const
+{
+	return
+		EMPTY_BOARD ^
+		CORNERS ^
+		rPawns ^
+		rKnights ^
+		rBishops ^
+		rRooks ^
+		rQueens ^
+		rKing ^
+		bPawns ^
+		bKnights ^
+		bBishops ^
+		bRooks ^
+		bQueens ^
+		bKing ^
+		yPawns ^
+		yKnights ^
+		yBishops ^
+		yRooks ^
+		yQueens ^
+		yKing ^
+		gPawns ^
+		gKnights ^
+		gBishops ^
+		gRooks ^
+		gQueens ^
+		gKing;
+}

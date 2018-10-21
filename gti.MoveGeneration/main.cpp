@@ -2,15 +2,17 @@
 #include "Board.hpp"
 #include "BoardDrawer.hpp"
 #include "MoveGenerator.hpp"
+#include "Utils.hpp"
 
 int main() 
 {
 	Board board{};
-	BoardDrawer drawer{ board };
+	Utils::PrintBinary(board.GetEmptySquares());
+	/*BoardDrawer drawer{ board };
 	MoveGenerator generator{ board };
 	auto moves = generator.GetMoves();
 
-	drawer.DrawBoard();
+	drawer.DrawBoard();*/
 
 	std::getchar();
 
