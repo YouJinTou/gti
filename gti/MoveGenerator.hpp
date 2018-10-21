@@ -17,6 +17,11 @@ private:
 	const Board& board;
 private:
 	std::vector<I256> GetPawnMoves() const;
+	std::vector<I256> GetRedPawnMoves() const;
+	std::vector<I256> GetBluePawnMoves() const;
+	std::vector<I256> GetYellowPawnMoves() const;
+	std::vector<I256> GetGreenPawnMoves() const;
+private:
 	std::vector<I256> GetKnightMoves() const;
 	std::vector<I256> GetBishopMoves() const;
 	std::vector<I256> GetRookMoves() const;
