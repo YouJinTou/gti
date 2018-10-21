@@ -34,6 +34,7 @@ const I256 Board::RANK_4{ "22834569286720449932986229528799881659529822208" };
 const I256 Board::RANK_14{ "16383" };
 
 Board::Board() :
+	toMove{ PlayerColor::Red },
 	rPawns{ RED_PAWNS_INITIAL },
 	rKnights{ RED_KNIGHTS_INITIAL },
 	rBishops{ RED_BISHOPS_INITIAL },
