@@ -114,7 +114,7 @@ bool BoardDrawer::TryDrawPlayerSquare(
 void BoardDrawer::DrawEmptySquare(size_t i) const
 {
 	auto mask = I256{ 1 } << i;
-	auto corners = board.GetCorners();
+	auto corners = board.CORNERS;
 
 	if ((mask & corners) == mask)
 	{
