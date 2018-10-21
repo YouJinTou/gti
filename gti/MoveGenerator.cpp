@@ -31,15 +31,15 @@ std::vector<I256> MoveGenerator::GetPawnMoves() const
 	{
 	case PlayerColor::Red:
 		return GetPawnMoves(
-			board.GetRedPawns(), 
-			false, 
-			RED_PAWN_FORWARD_MOVE_SHIFT, 
-			RED_PAWN_LEFT_CAPTURE_SHIFT, 
-			RED_PAWN_RIGHT_CAPTURE_SHIFT, 
-			board.RANK_4, 
-			board.GetOthersPieces(), 
-			board.RED_PROMOTION_RANK, 
-			board.FILE_N, 
+			board.GetRedPawns(),
+			false,
+			RED_PAWN_FORWARD_MOVE_SHIFT,
+			RED_PAWN_LEFT_CAPTURE_SHIFT,
+			RED_PAWN_RIGHT_CAPTURE_SHIFT,
+			board.RANK_4,
+			board.GetOthersPieces(),
+			board.RED_PROMOTION_RANK,
+			board.FILE_N,
 			board.FILE_A);
 	case PlayerColor::Blue:
 		return GetPawnMoves();
@@ -53,14 +53,14 @@ std::vector<I256> MoveGenerator::GetPawnMoves() const
 }
 
 std::vector<I256> MoveGenerator::GetPawnMoves(
-	I256 pawns, 
-	bool increasing, 
-	int forwardShift, 
-	int leftShift, 
-	int rightShift, 
-	I256 twoForwardLine, 
-	I256 othersPieces, 
-	I256 promotionLine, 
+	I256 pawns,
+	bool increasing,
+	int forwardShift,
+	int leftShift,
+	int rightShift,
+	I256 twoForwardLine,
+	I256 othersPieces,
+	I256 promotionLine,
 	I256 leftCaptureOpposingLine,
 	I256 rightCaptureOpposingLine) const
 {
