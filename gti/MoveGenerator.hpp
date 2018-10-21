@@ -5,12 +5,13 @@
 
 #include "Board.hpp"
 #include "Typedefs.hpp"
+#include "Types.hpp"
 
 class MoveGenerator
 {
 public:
 	MoveGenerator(const Board& board);
-	std::vector<I256> GetMoves() const;
+	std::vector<Move> GetMoves() const;
 private:
 	static constexpr int RED_PAWN_FORWARD_MOVE_SHIFT = 14;
 	static constexpr int RED_PAWN_LEFT_CAPTURE_SHIFT = 15;
@@ -18,8 +19,8 @@ private:
 private:
 	const Board& board;
 private:
-	std::vector<I256> GetPawnMoves() const;
-	std::vector<I256> GetPawnMoves(
+	std::vector<Move> GetPawnMoves() const;
+	std::vector<Move> GetPawnMoves(
 		I256 pawns,
 		bool increasing,
 		int forwardShift,
@@ -30,11 +31,11 @@ private:
 		I256 promotionLine,
 		I256 leftCaptureOpposingLine,
 		I256 rightCaptureOpposingLine) const;
-	std::vector<I256> GetKnightMoves() const;
-	std::vector<I256> GetBishopMoves() const;
-	std::vector<I256> GetRookMoves() const;
-	std::vector<I256> GetQueenMoves() const;
-	std::vector<I256> GetKingMoves() const;
+	std::vector<Move> GetKnightMoves() const;
+	std::vector<Move> GetBishopMoves() const;
+	std::vector<Move> GetRookMoves() const;
+	std::vector<Move> GetQueenMoves() const;
+	std::vector<Move> GetKingMoves() const;
 };
 
 #endif // !MOVE_GENERATOR_HPP
