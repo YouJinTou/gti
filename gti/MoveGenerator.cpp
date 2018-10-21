@@ -30,38 +30,54 @@ std::vector<I256> MoveGenerator::GetPawnMoves() const
 	switch (board.ToMove())
 	{
 	case PlayerColor::Red:
-		return GetRedPawnMoves();
+		return GetPawnMoves(
+			board.GetRedPawns(), 
+			false, 
+			RED_PAWN_FORWARD_MOVE_SHIFT, 
+			RED_PAWN_LEFT_CAPTURE_SHIFT, 
+			RED_PAWN_RIGHT_CAPTURE_SHIFT, 
+			board.RANK_4, 
+			board.GetOthersPieces(), 
+			board.RED_PROMOTION_RANK, 
+			board.FILE_N, 
+			board.FILE_A);
 	case PlayerColor::Blue:
-		return GetBluePawnMoves();
+		return GetPawnMoves();
 	case PlayerColor::Yellow:
-		return GetYellowPawnMoves();
+		return GetPawnMoves();
 	case PlayerColor::Green:
-		return GetGreenPawnMoves();
+		return GetPawnMoves();
 	default:
 		return std::vector<I256>{};
 	}
 }
 
-std::vector<I256> MoveGenerator::GetRedPawnMoves() const
+std::vector<I256> MoveGenerator::GetPawnMoves(
+	I256 pawns, 
+	bool increasing, 
+	int forwardShift, 
+	int leftShift, 
+	int rightShift, 
+	I256 twoForwardLine, 
+	I256 othersPieces, 
+	I256 promotionLine, 
+	I256 leftCaptureOpposingLine,
+	I256 rightCaptureOpposingLine) const
 {
-	auto pawns = board.GetRedPawns();
 	auto emptySquares = board.GetEmptySquares();
-	auto oneForwardMoves = (pawns >> 14) & emptySquares & ~board.RED_PROMOTION_RANK;
-	auto twoForwardMoves =
-		(pawns >> 28) & emptySquares & (emptySquares >> 14) & board.RED_PAWNS_INITIAL;
-	auto leftCaptures =
-		(pawns >> 15) &
-		(board.GetBlue() | board.GetYellow() | board.GetGreen() & ~board.RED_PROMOTION_RANK);
-	auto rightCaptures =
-		(pawns >> 13) &
-		(board.GetBlue() | board.GetYellow() | board.GetGreen() & ~board.RED_PROMOTION_RANK);
-	auto forwardPromotions = (pawns >> 14) & emptySquares & Board::RED_PROMOTION_RANK;
-	auto leftCapturePromotions =
-		(pawns >> 15) &
-		(board.GetBlue() | board.GetYellow() | board.GetGreen()) & board.RED_PROMOTION_RANK;
-	auto rightCapturePromotions =
-		(pawns >> 13) &
-		(board.GetBlue() | board.GetYellow() | board.GetGreen()) & board.RED_PROMOTION_RANK;
+	auto doubleForwardShift = forwardShift * 2;
+	auto emptyForwardShifts = increasing ? (emptySquares >> forwardShift) : (emptySquares << forwardShift);
+	auto forwardShifts = increasing ? (pawns << forwardShift) : (pawns >> forwardShift);
+	auto doubleShifts = increasing ? (pawns << doubleForwardShift) : (pawns >> doubleForwardShift);
+	auto leftShifts = increasing ? (pawns >> leftShift) : (pawns << rightShift);
+	auto rightShifts = increasing ? (pawns >> rightShift) : (pawns << rightShift);
+	auto oneForwardMoves = forwardShifts & emptySquares &  ~promotionLine;
+	auto twoForwardMoves = doubleShifts & emptySquares & emptyForwardShifts & twoForwardLine;
+	auto leftCaptures = leftShifts & othersPieces & ~promotionLine & ~leftCaptureOpposingLine;
+	auto rightCaptures = rightShifts & othersPieces & ~promotionLine & ~rightCaptureOpposingLine;
+	auto forwardPromotions = forwardShifts & emptySquares & promotionLine;
+	auto leftCapturePromotions = leftShifts & othersPieces & promotionLine;
+	auto rightCapturePromotions = rightShifts & othersPieces & promotionLine;
 
 	return std::vector<I256>
 	{
@@ -73,21 +89,6 @@ std::vector<I256> MoveGenerator::GetRedPawnMoves() const
 			leftCapturePromotions,
 			rightCapturePromotions
 	};
-}
-
-std::vector<I256> MoveGenerator::GetBluePawnMoves() const
-{
-	return std::vector<I256>();
-}
-
-std::vector<I256> MoveGenerator::GetYellowPawnMoves() const
-{
-	return std::vector<I256>();
-}
-
-std::vector<I256> MoveGenerator::GetGreenPawnMoves() const
-{
-	return std::vector<I256>();
 }
 
 std::vector<I256> MoveGenerator::GetKnightMoves() const
