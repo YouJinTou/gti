@@ -122,6 +122,7 @@
     <ClInclude Include="Constants.hpp" />
     <ClInclude Include="MoveGenerator.hpp" />
     <ClInclude Include="Typedefs.hpp" />
+    <ClInclude Include="Types.hpp" />
     <ClInclude Include="Utils.hpp" />
   </ItemGroup>
   <ItemGroup>
