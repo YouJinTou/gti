@@ -259,5 +259,5 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
-/gti.MoveGeneration/.~lock.board.ods#
-/gti.MoveGeneration/.~lock.binaries.odt#
+/gti/.~lock.board.ods#
+/gti/.~lock.binaries.odt#
