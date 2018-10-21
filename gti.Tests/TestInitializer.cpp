@@ -2,15 +2,16 @@
 #include "CppUnitTest.h"
 
 #include "../gti/Board.hpp"
+#include "../gti/Board.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace gtiTests
 {
-	TEST_CLASS(MoveGeneratorTests)
+	TEST_CLASS(TestInitializer)
 	{
 	public:
-		TEST_METHOD(TODO)
+		TEST_METHOD(InitializeTests)
 		{
 		}
 	};

@@ -164,6 +164,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="BoardTests.cpp" />
+    <ClCompile Include="TestInitializer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\gti\gti.vcxproj">
