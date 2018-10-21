@@ -119,6 +119,7 @@
     <ClInclude Include="Board.hpp" />
     <ClInclude Include="BoardDrawer.hpp" />
     <ClInclude Include="Constants.hpp" />
+    <ClInclude Include="MoveGenerator.hpp" />
     <ClInclude Include="Typedefs.hpp" />
     <ClInclude Include="Utils.hpp" />
   </ItemGroup>
@@ -126,6 +127,7 @@
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="BoardDrawer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MoveGenerator.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>

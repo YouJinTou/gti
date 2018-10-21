@@ -1,15 +1,16 @@
 #include <iostream>
 #include "Board.hpp"
 #include "BoardDrawer.hpp"
+#include "MoveGenerator.hpp"
 
 int main() 
 {
 	Board board{};
-	BoardDrawer bd{ board };
+	BoardDrawer drawer{ board };
+	MoveGenerator generator{ board };
+	auto moves = generator.GetMoves();
 
-	board.GetNextPlayerMoves();
-
-	bd.DrawBoard();
+	drawer.DrawBoard();
 
 	std::getchar();
 
