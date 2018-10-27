@@ -51,8 +51,8 @@ std::vector<Move> MoveGenerator::GetPawnMoves() const
 			board.FILE_D,
 			board.GetOthersPieces(),
 			board.FILE_H,
-			board.FILE_N,
-			board.FILE_A);
+			board.RANK_1,
+			board.RANK_14);
 	case PlayerColor::Yellow:
 		return GetPawnMoves();
 	case PlayerColor::Green:
