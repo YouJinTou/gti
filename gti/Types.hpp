@@ -12,7 +12,7 @@ struct Move
 	int from;
 	int to;
 
-	inline bool operator==(const Move & other)
+	inline bool operator==(const Move& other)
 	{
 		return (from == other.from && to == other.to);
 	}
