@@ -36,7 +36,6 @@ public:
 	static const I256 GREEN_QUEENS_INITIAL;
 	static const I256 GREEN_KING_INITIAL;
 	static const I256 CORNERS;
-	static const I256 BLUE_PROMOTION_LINE;
 	static const I256 FILE_A;
 	static const I256 FILE_D;
 	static const I256 FILE_H;
