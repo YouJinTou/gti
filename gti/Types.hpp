@@ -11,7 +11,11 @@ struct Move
 
 	int from;
 	int to;
-};
 
+	inline bool operator==(const Move & other)
+	{
+		return (from == other.from && to == other.to);
+	}
+};
 
 #endif // !TYPES_HPP
