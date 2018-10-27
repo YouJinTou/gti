@@ -45,6 +45,7 @@ public:
 public:
 	Board();
 	PlayerColor ToMove() const;
+	void SetToMove(PlayerColor player);
 	I256 GetRed() const;
 	I256 GetRedPawns() const;
 	I256 GetRedKnights() const;

@@ -67,6 +67,11 @@ PlayerColor Board::ToMove() const
 	return toMove;
 }
 
+void Board::SetToMove(PlayerColor player)
+{
+	toMove = player;
+}
+
 I256 Board::GetRed() const
 {
 	return rPawns | rKnights | rBishops | rRooks | rQueens | rKing;
