@@ -40,6 +40,11 @@ namespace gtiTests
 				Move{ 25, 53 }
 			};
 
+			ValidateGeneratedMoves(moves, expectedMoves);
+		}
+	private:
+		void ValidateGeneratedMoves(std::vector<Move>& moves, std::vector<Move>& expectedMoves)
+		{
 			for (auto move : expectedMoves)
 			{
 				if (std::find(moves.begin(), moves.end(), move) == moves.end())
