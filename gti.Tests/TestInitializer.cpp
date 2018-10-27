@@ -3,6 +3,8 @@
 
 #include "../gti/Board.hpp"
 #include "../gti/Board.cpp"
+#include "../gti/MoveGenerator.hpp"
+#include "../gti/MoveGenerator.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
