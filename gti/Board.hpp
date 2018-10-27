@@ -36,11 +36,14 @@ public:
 	static const I256 GREEN_QUEENS_INITIAL;
 	static const I256 GREEN_KING_INITIAL;
 	static const I256 CORNERS;
-	static const I256 RED_PROMOTION_RANK;
+	static const I256 BLUE_PROMOTION_LINE;
 	static const I256 FILE_A;
+	static const I256 FILE_D;
+	static const I256 FILE_H;
 	static const I256 FILE_N;
 	static const I256 RANK_1;
 	static const I256 RANK_4;
+	static const I256 RANK_8;
 	static const I256 RANK_14;
 public:
 	Board();

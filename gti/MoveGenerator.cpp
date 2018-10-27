@@ -38,11 +38,21 @@ std::vector<Move> MoveGenerator::GetPawnMoves() const
 			RED_PAWN_RIGHT_CAPTURE_SHIFT,
 			board.RANK_4,
 			board.GetOthersPieces(),
-			board.RED_PROMOTION_RANK,
+			board.RANK_8,
 			board.FILE_N,
 			board.FILE_A);
 	case PlayerColor::Blue:
-		return GetPawnMoves();
+		return GetPawnMoves(
+			board.GetBluePawns(),
+			false,
+			BLUE_PAWN_FORWARD_MOVE_SHIFT,
+			BLUE_PAWN_LEFT_CAPTURE_SHIFT,
+			BLUE_PAWN_RIGHT_CAPTURE_SHIFT,
+			board.FILE_D,
+			board.GetOthersPieces(),
+			board.FILE_H,
+			board.FILE_N,
+			board.FILE_A);
 	case PlayerColor::Yellow:
 		return GetPawnMoves();
 	case PlayerColor::Green:
@@ -69,7 +79,7 @@ std::vector<Move> MoveGenerator::GetPawnMoves(
 	I256 emptyForwardShifts = increasing ? (emptySquares >> forwardShift) : (emptySquares << forwardShift);
 	I256 forwardShifts = increasing ? (pawns << forwardShift) : (pawns >> forwardShift);
 	I256 doubleShifts = increasing ? (pawns << doubleForwardShift) : (pawns >> doubleForwardShift);
-	I256 leftShifts = increasing ? (pawns >> leftShift) : (pawns << rightShift);
+	I256 leftShifts = increasing ? (pawns >> leftShift) : (pawns << leftShift);
 	I256 rightShifts = increasing ? (pawns >> rightShift) : (pawns << rightShift);
 	I256 oneForwardMoves = forwardShifts & emptySquares &  ~promotionLine;
 	I256 twoForwardMoves = doubleShifts & emptySquares & emptyForwardShifts & twoForwardLine;
