@@ -54,9 +54,29 @@ std::vector<Move> MoveGenerator::GetPawnMoves() const
 			board.RANK_1,
 			board.RANK_14);
 	case PlayerColor::Yellow:
-		return GetPawnMoves();
+		return GetPawnMoves(
+			board.GetYellowPawns(),
+			true,
+			YELLOW_PAWN_FORWARD_MOVE_SHIFT,
+			YELLOW_PAWN_LEFT_CAPTURE_SHIFT,
+			YELLOW_PAWN_RIGHT_CAPTURE_SHIFT,
+			board.RANK_11,
+			board.GetOthersPieces(),
+			board.RANK_7,
+			board.FILE_A,
+			board.FILE_N);
 	case PlayerColor::Green:
-		return GetPawnMoves();
+		return GetPawnMoves(
+			board.GetGreenPawns(),
+			true,
+			GREEN_PAWN_FORWARD_MOVE_SHIFT,
+			GREEN_PAWN_LEFT_CAPTURE_SHIFT,
+			GREEN_PAWN_RIGHT_CAPTURE_SHIFT,
+			board.FILE_K,
+			board.GetOthersPieces(),
+			board.FILE_G,
+			board.RANK_14,
+			board.RANK_1);
 	default:
 		return std::vector<Move>{};
 	}

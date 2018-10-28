@@ -25,6 +25,12 @@ private:
 	static constexpr int BLUE_PAWN_FORWARD_MOVE_SHIFT = 1;
 	static constexpr int BLUE_PAWN_LEFT_CAPTURE_SHIFT = 15;
 	static constexpr int BLUE_PAWN_RIGHT_CAPTURE_SHIFT = 13;
+	static constexpr int YELLOW_PAWN_FORWARD_MOVE_SHIFT = 14;
+	static constexpr int YELLOW_PAWN_LEFT_CAPTURE_SHIFT = 13;
+	static constexpr int YELLOW_PAWN_RIGHT_CAPTURE_SHIFT = 15;
+	static constexpr int GREEN_PAWN_FORWARD_MOVE_SHIFT = 1;
+	static constexpr int GREEN_PAWN_LEFT_CAPTURE_SHIFT = 15;
+	static constexpr int GREEN_PAWN_RIGHT_CAPTURE_SHIFT = 13;
 private:
 	const Board& board;
 private:

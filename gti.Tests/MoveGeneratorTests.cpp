@@ -67,7 +67,67 @@ namespace gtiTests
 				Move{ 100, 102 },
 				Move{ 114, 116 },
 				Move{ 128, 130 },
-				Move{ 142, 144 },
+				Move{ 142, 144 }
+			};
+
+			ValidateGeneratedMoves(moves, expectedMoves);
+		}
+		TEST_METHOD(GetPawnMoves_InitialBoard_ValidYellowMoves)
+		{
+			Board board{};
+
+			board.SetToMove(PlayerColor::Yellow);
+
+			MoveGenerator generator{ board };
+			auto moves = generator.GetPawnMoves();
+			std::vector<Move> expectedMoves
+			{
+				Move{ 172, 158 },
+				Move{ 173, 159 },
+				Move{ 174, 160 },
+				Move{ 175, 161 },
+				Move{ 176, 162 },
+				Move{ 177, 163 },
+				Move{ 178, 164 },
+				Move{ 179, 165 },
+				Move{ 172, 144 },
+				Move{ 173, 145 },
+				Move{ 174, 146 },
+				Move{ 175, 147 },
+				Move{ 176, 148 },
+				Move{ 177, 149 },
+				Move{ 178, 150 },
+				Move{ 179, 151 }
+			};
+
+			ValidateGeneratedMoves(moves, expectedMoves);
+		}
+		TEST_METHOD(GetPawnMoves_InitialBoard_ValidGreenMoves)
+		{
+			Board board{};
+
+			board.SetToMove(PlayerColor::Green);
+
+			MoveGenerator generator{ board };
+			auto moves = generator.GetPawnMoves();
+			std::vector<Move> expectedMoves
+			{
+				Move{ 55, 54 },
+				Move{ 69, 68 },
+				Move{ 83, 82 },
+				Move{ 97, 96 },
+				Move{ 111, 110 },
+				Move{ 125, 124 },
+				Move{ 139, 138 },
+				Move{ 153, 152 },
+				Move{ 55, 53 },
+				Move{ 69, 67 },
+				Move{ 83, 81 },
+				Move{ 97, 95 },
+				Move{ 111, 109 },
+				Move{ 125, 123 },
+				Move{ 139, 137 },
+				Move{ 153, 151 },
 			};
 
 			ValidateGeneratedMoves(moves, expectedMoves);

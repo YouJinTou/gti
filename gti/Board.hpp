@@ -38,11 +38,15 @@ public:
 	static const I256 CORNERS;
 	static const I256 FILE_A;
 	static const I256 FILE_D;
+	static const I256 FILE_G;
 	static const I256 FILE_H;
+	static const I256 FILE_K;
 	static const I256 FILE_N;
 	static const I256 RANK_1;
 	static const I256 RANK_4;
+	static const I256 RANK_7;
 	static const I256 RANK_8;
+	static const I256 RANK_11;
 	static const I256 RANK_14;
 public:
 	Board();
