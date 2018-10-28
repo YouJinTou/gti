@@ -16,7 +16,7 @@ namespace gtiTests
 			auto emptySquares = board.GetEmptySquares();
 			I256 expectedEmptySquares{ "46591068453637164260361794096484197643923981598720" };
 
-			Assert::AreEqual(emptySquares.str(), expectedEmptySquares.str());
+			Assert::AreEqual(expectedEmptySquares.str(), emptySquares.str());
 		}
 
 		TEST_METHOD(GetRed_InitialBoard_Red)
@@ -25,16 +25,16 @@ namespace gtiTests
 			auto red = board.GetRed();
 			I256 expectedRed{ "12505926868080732774944114433913560689973096351229437542400" };
 
-			Assert::AreEqual(red.str(), expectedRed.str());
+			Assert::AreEqual(expectedRed.str(), red.str());
 		}
 
 		TEST_METHOD(GetBlue_InitialBoard_Blue)
 		{
 			Board board{};
 			auto blue = board.GetBlue();
-			I256 expectedBlue{ "4181644952077523914472180097270081996718080" };
+			I256 expectedBlue{ "17128017723709537953678049678418255858557255680" };
 
-			Assert::AreEqual(blue.str(), expectedBlue.str());
+			Assert::AreEqual(expectedBlue.str(), blue.str());
 		}
 
 		TEST_METHOD(GetYellow_InitialBoard_Yellow)
@@ -43,16 +43,16 @@ namespace gtiTests
 			auto yellow = board.GetYellow();
 			I256 expectedYellow{ "33425400" };
 
-			Assert::AreEqual(yellow.str(), expectedYellow.str());
+			Assert::AreEqual(expectedYellow.str(), yellow.str());
 		}
 
 		TEST_METHOD(GetGreen_InitialBoard_Green)
 		{
 			Board board{};
 			auto green = board.GetGreen();
-			I256 expectedGreen{ "17128017723709537953678049678418255858557255680" };
+			I256 expectedGreen{ "4181644952077523914472180097270081996718080" };
 
-			Assert::AreEqual(green.str(), expectedGreen.str());
+			Assert::AreEqual(expectedGreen.str(), green.str());
 		}
 	};
 }
