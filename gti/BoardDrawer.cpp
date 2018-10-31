@@ -86,6 +86,8 @@ void BoardDrawer::DrawBitboard(I256 bitboard) const // Starts from A1 (bottom-le
 
 		rows[currentRow].pop();
 	}
+
+	std::cout << std::endl << std::endl;
 }
 
 void BoardDrawer::SetColor(WORD color) const

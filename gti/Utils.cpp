@@ -7,5 +7,5 @@ void Utils::PrintBinary(I256 n)
 		std::cout << ((n >> i) & 1);
 	}
 
-	std::cout << std::endl;
+	std::cout << std::endl << std::endl;
 }
