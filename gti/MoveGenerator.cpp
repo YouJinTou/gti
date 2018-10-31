@@ -153,7 +153,36 @@ std::vector<Move> MoveGenerator::GetPawnMoves(
 
 std::vector<Move> MoveGenerator::GetKnightMoves() const
 {
-	return std::vector<Move>();
+	switch (board.ToMove())
+	{
+	case PlayerColor::Red:
+		return GetKnightMoves(board.GetRedKnights(), board.GetOthersPieces());
+	case PlayerColor::Blue:
+		return GetKnightMoves(board.GetBlueKnights(), board.GetOthersPieces());
+	case PlayerColor::Yellow:
+		return GetKnightMoves(board.GetYellowKnights(), board.GetOthersPieces());
+	case PlayerColor::Green:
+		return GetKnightMoves(board.GetGreenKnights(), board.GetOthersPieces());
+	default:
+		return std::vector<Move>{};
+	}
+}
+
+std::vector<Move> MoveGenerator::GetKnightMoves(I256 knights, I256 othersPieces) const
+{
+	I256 emptySquares = board.GetEmptySquares();
+	I256 nneMoves = (knights >> KNIGHT_NNE_SHIFT) & (emptySquares | othersPieces);
+	std::vector<Move> moves{};
+
+	for (int i = 0, j = board.TOTAL_SQUARES; i < board.TOTAL_SQUARES; i++, j--)
+	{
+		if (((nneMoves >> i) & 1) == 1)
+		{
+			moves.push_back({ j - KNIGHT_NNE_SHIFT, j });
+		}
+	}
+
+	return moves;
 }
 
 std::vector<Move> MoveGenerator::GetBishopMoves() const

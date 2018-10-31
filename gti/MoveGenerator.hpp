@@ -31,6 +31,14 @@ private:
 	static constexpr int GREEN_PAWN_FORWARD_MOVE_SHIFT = 1;
 	static constexpr int GREEN_PAWN_LEFT_CAPTURE_SHIFT = 15;
 	static constexpr int GREEN_PAWN_RIGHT_CAPTURE_SHIFT = 13;
+	static constexpr int KNIGHT_NNE_SHIFT = 29;
+	static constexpr int KNIGHT_NE_SHIFT = 16;
+	static constexpr int KNIGHT_SE_SHIFT = 12;
+	static constexpr int KNIGHT_SSE_SHIFT = 27;
+	static constexpr int KNIGHT_SSW_SHIFT = 29;
+	static constexpr int KNIGHT_SW_SHIFT = 16;
+	static constexpr int KNIGHT_NW_SHIFT = 12;
+	static constexpr int KNIGHT_NNW_SHIFT = 27;
 private:
 	const Board& board;
 private:
@@ -45,6 +53,7 @@ private:
 		I256 promotionLine,
 		I256 leftCaptureOpposingLine,
 		I256 rightCaptureOpposingLine) const;
+	std::vector<Move> GetKnightMoves(I256 knights, I256 othersPieces) const;
 };
 
 #endif // !MOVE_GENERATOR_HPP
