@@ -5,8 +5,6 @@
 
 class Utils 
 {
-private:
-	typedef boost::multiprecision::uint256_t I256;
 public:
 	static void PrintBinary(I256 n);
 };
