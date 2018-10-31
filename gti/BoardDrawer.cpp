@@ -1,4 +1,6 @@
 #include <iostream>
+#include <stack>
+#include <vector>
 #include <windows.h>
 
 #include "BoardDrawer.hpp"
@@ -39,7 +41,7 @@ void BoardDrawer::DrawBoard() const
 	{
 		if (i % board.SQUARES_PER_SIDE == 0)
 		{
-			std::cout << "\n\n";
+			std::cout << std::endl;
 		}
 
 		bool squareDrawn =
@@ -52,6 +54,37 @@ void BoardDrawer::DrawBoard() const
 		{
 			DrawEmptySquare(i);
 		}
+	}
+}
+
+void BoardDrawer::DrawBitboard(I256 bitboard) const // Starts from A1 (bottom-left)
+{
+	std::vector<std::stack<I256>> rows{};
+
+	for (size_t i = 0; i < board.TOTAL_SQUARES; i++)
+	{
+		if (i % board.SQUARES_PER_SIDE == 0)
+		{
+			rows.push_back(std::stack<I256>{});
+		}
+
+		int currentRow = i / board.SQUARES_PER_SIDE;
+
+		rows[currentRow].push(((bitboard >> i) & 1));
+	}
+
+	for (size_t i = 0; i < board.TOTAL_SQUARES; i++)
+	{
+		if (i % board.SQUARES_PER_SIDE == 0 && i != 0)
+		{
+			std::cout << std::endl;
+		}
+
+		int currentRow = i / board.SQUARES_PER_SIDE;
+
+		std::cout << rows[currentRow].top();
+
+		rows[currentRow].pop();
 	}
 }
 
