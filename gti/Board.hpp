@@ -41,6 +41,7 @@ public:
 	static const I256 FILE_G;
 	static const I256 FILE_H;
 	static const I256 FILE_K;
+	static const I256 FILE_M;
 	static const I256 FILE_N;
 	static const I256 RANK_1;
 	static const I256 RANK_4;
