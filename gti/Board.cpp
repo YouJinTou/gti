@@ -66,8 +66,40 @@ Board::Board() :
 	gBishops{ GREEN_BISHOPS_INITIAL },
 	gRooks{ GREEN_ROOKS_INITIAL },
 	gQueens{ GREEN_QUEENS_INITIAL },
-	gKing{ GREEN_KING_INITIAL }
+	gKing{ GREEN_KING_INITIAL },
+	parser{ PositionStringParser{} }
 {
+}
+
+Board::Board(std::string positionString) :
+	parser{ PositionStringParser{} }
+{
+	auto parsedBoard = parser.ParsePositionString(positionString);
+	toMove = parsedBoard.ToMove();
+	rPawns = parsedBoard.GetRedPawns();
+	rKnights = parsedBoard.GetRedKnights();
+	rBishops = parsedBoard.GetRedBishops();
+	rRooks = parsedBoard.GetRedRooks();
+	rQueens = parsedBoard.GetRedQueens();
+	rKing = parsedBoard.GetRedKing();
+	bPawns = parsedBoard.GetBluePawns();
+	bKnights = parsedBoard.GetBlueKnights();
+	bBishops = parsedBoard.GetBlueBishops();
+	bRooks = parsedBoard.GetBlueRooks();
+	bQueens = parsedBoard.GetBlueQueens();
+	bKing = parsedBoard.GetBlueKing();
+	yPawns = parsedBoard.GetYellowPawns();
+	yKnights = parsedBoard.GetYellowKnights();
+	yBishops = parsedBoard.GetYellowBishops();
+	yRooks = parsedBoard.GetYellowRooks();
+	yQueens = parsedBoard.GetYellowQueens();
+	yKing = parsedBoard.GetYellowKing();
+	gPawns = parsedBoard.GetGreenPawns();
+	gKnights = parsedBoard.GetGreenKnights();
+	gBishops = parsedBoard.GetGreenBishops();
+	gRooks = parsedBoard.GetGreenRooks();
+	gQueens = parsedBoard.GetGreenQueens();
+	gKing = parsedBoard.GetGreenKing();
 }
 
 PlayerColor Board::ToMove() const

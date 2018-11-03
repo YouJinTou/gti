@@ -1,8 +1,11 @@
 #ifndef BOARD_HPP
 #define BOARD_HPP
 
+#include <string>
+
 #include "Constants.hpp"
 #include "Typedefs.hpp"
+#include "PositionStringParser.hpp"
 
 class Board 
 {
@@ -52,6 +55,7 @@ public:
 	static const I256 RANK_14;
 public:
 	Board();
+	Board(std::string positionString);
 	PlayerColor ToMove() const;
 	void SetToMove(PlayerColor player);
 	I256 GetRed() const;
@@ -110,6 +114,8 @@ private:
 	I256 gRooks;
 	I256 gQueens;
 	I256 gKing;
+private:
+	PositionStringParser parser;
 };
 
 #endif // !BOARD_HPP

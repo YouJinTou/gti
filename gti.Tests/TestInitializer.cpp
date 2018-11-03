@@ -5,6 +5,8 @@
 #include "../gti/Board.cpp"
 #include "../gti/MoveGenerator.hpp"
 #include "../gti/MoveGenerator.cpp"
+#include "../gti/PositionStringParser.hpp"
+#include "../gti/PositionStringParser.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
