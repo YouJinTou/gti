@@ -37,6 +37,7 @@ public:
 	static const I256 GREEN_KING_INITIAL;
 	static const I256 CORNERS;
 	static const I256 FILE_A;
+	static const I256 FILE_B;
 	static const I256 FILE_D;
 	static const I256 FILE_G;
 	static const I256 FILE_H;
