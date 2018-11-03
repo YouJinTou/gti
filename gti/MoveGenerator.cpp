@@ -116,33 +116,27 @@ std::vector<Move> MoveGenerator::GetPawnMoves(
 		{
 			moves.push_back({ increasing ? j + forwardShift : j - forwardShift, j });
 		}
-
-		if (((twoForwardMoves >> i) & 1) == 1)
+		else if (((twoForwardMoves >> i) & 1) == 1)
 		{
 			moves.push_back({ increasing ? j + doubleForwardShift : j - doubleForwardShift, j });
 		}
-
-		if (((leftCaptures >> i) & 1) == 1)
+		else if (((leftCaptures >> i) & 1) == 1)
 		{
 			moves.push_back({ increasing ? j + leftShift : j - leftShift, j });
 		}
-
-		if (((rightCaptures >> i) & 1) == 1)
+		else if (((rightCaptures >> i) & 1) == 1)
 		{
 			moves.push_back({ increasing ? j + rightShift : j - rightShift, j });
 		}
-
-		if (((forwardPromotions >> i) & 1) == 1)
+		else if (((forwardPromotions >> i) & 1) == 1)
 		{
 			moves.push_back({ increasing ? j + forwardShift : j - forwardShift, j });
 		}
-
-		if (((leftCapturePromotions >> i) & 1) == 1)
+		else if (((leftCapturePromotions >> i) & 1) == 1)
 		{
 			moves.push_back({ increasing ? j + leftShift : j - leftShift, j });
 		}
-
-		if (((rightCapturePromotions >> i) & 1) == 1)
+		else if (((rightCapturePromotions >> i) & 1) == 1)
 		{
 			moves.push_back({ increasing ? j + rightShift : j - rightShift, j });
 		}
@@ -172,6 +166,13 @@ std::vector<Move> MoveGenerator::GetKnightMoves(I256 knights, I256 othersPieces)
 {
 	I256 emptySquares = board.GetEmptySquares();
 	I256 nneMoves = (knights >> KNIGHT_NNE_SHIFT) & (emptySquares | othersPieces);
+	I256 neMoves = (knights >> KNIGHT_NE_SHIFT) & (emptySquares | othersPieces);
+	I256 seMoves = (knights << KNIGHT_SE_SHIFT) & (emptySquares | othersPieces);
+	I256 sseMoves = (knights << KNIGHT_SSE_SHIFT) & (emptySquares | othersPieces);
+	I256 sswMoves = (knights << KNIGHT_SSW_SHIFT) & (emptySquares | othersPieces);
+	I256 swMoves = (knights << KNIGHT_SW_SHIFT) & (emptySquares | othersPieces);
+	I256 nwMoves = (knights >> KNIGHT_NW_SHIFT) & (emptySquares | othersPieces);
+	I256 nnwMoves = (knights >> KNIGHT_NNW_SHIFT) & (emptySquares | othersPieces);
 	std::vector<Move> moves{};
 
 	for (int i = 0, j = board.TOTAL_SQUARES; i < board.TOTAL_SQUARES; i++, j--)
@@ -179,6 +180,34 @@ std::vector<Move> MoveGenerator::GetKnightMoves(I256 knights, I256 othersPieces)
 		if (((nneMoves >> i) & 1) == 1)
 		{
 			moves.push_back({ j - KNIGHT_NNE_SHIFT, j });
+		}
+		else if (((neMoves >> i) & 1) == 1)
+		{
+			moves.push_back({ j - KNIGHT_NE_SHIFT, j });
+		}
+		else if (((seMoves >> i) & 1) == 1)
+		{
+			moves.push_back({ j + KNIGHT_SE_SHIFT, j });
+		}
+		else if (((sseMoves >> i) & 1) == 1)
+		{
+			moves.push_back({ j + KNIGHT_SSE_SHIFT, j });
+		}
+		else if (((sswMoves >> i) & 1) == 1)
+		{
+			moves.push_back({ j + KNIGHT_SSW_SHIFT, j });
+		}
+		else if (((swMoves >> i) & 1) == 1)
+		{
+			moves.push_back({ j + KNIGHT_SW_SHIFT, j });
+		}
+		else if (((nwMoves >> i) & 1) == 1)
+		{
+			moves.push_back({ j - KNIGHT_NW_SHIFT, j });
+		}
+		else if (((nnwMoves >> i) & 1) == 1)
+		{
+			moves.push_back({ j - KNIGHT_NNW_SHIFT, j });
 		}
 	}
 
