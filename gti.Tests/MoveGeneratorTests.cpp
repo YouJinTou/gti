@@ -168,6 +168,42 @@ namespace gtiTests
 
 			ValidateGeneratedMoves(moves, expectedMoves);
 		}
+		TEST_METHOD(GetKnightMoves_InitialBoard_ValidYellowMoves)
+		{
+			Board board{};
+
+			board.SetToMove(PlayerColor::Yellow);
+
+			MoveGenerator generator{ board };
+			auto moves = generator.GetKnightMoves();
+			std::vector<Move> expectedMoves
+			{
+				Move{ 187, 158 },
+				Move{ 187, 160 },
+				Move{ 192, 163 },
+				Move{ 192, 165 }
+			};
+
+			ValidateGeneratedMoves(moves, expectedMoves);
+		}
+		TEST_METHOD(GetKnightMoves_InitialBoard_ValidGreenMoves)
+		{
+			Board board{};
+
+			board.SetToMove(PlayerColor::Green);
+
+			MoveGenerator generator{ board };
+			auto moves = generator.GetKnightMoves();
+			std::vector<Move> expectedMoves
+			{
+				Move{ 70, 54 },
+				Move{ 70, 82 },
+				Move{ 140, 124 },
+				Move{ 140, 152 }				
+			};
+
+			ValidateGeneratedMoves(moves, expectedMoves);
+		}
 	private:
 		void ValidateGeneratedMoves(std::vector<Move>& moves, std::vector<Move>& expectedMoves)
 		{
