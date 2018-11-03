@@ -165,14 +165,14 @@ std::vector<Move> MoveGenerator::GetKnightMoves() const
 std::vector<Move> MoveGenerator::GetKnightMoves(I256 knights, I256 othersPieces) const
 {
 	I256 emptySquares = board.GetEmptySquares();
-	I256 nneMoves = (knights >> KNIGHT_NNE_SHIFT) & (emptySquares | othersPieces);
-	I256 neMoves = (knights >> KNIGHT_NE_SHIFT) & (emptySquares | othersPieces);
-	I256 seMoves = (knights << KNIGHT_SE_SHIFT) & (emptySquares | othersPieces);
-	I256 sseMoves = (knights << KNIGHT_SSE_SHIFT) & (emptySquares | othersPieces);
-	I256 sswMoves = (knights << KNIGHT_SSW_SHIFT) & (emptySquares | othersPieces);
-	I256 swMoves = (knights << KNIGHT_SW_SHIFT) & (emptySquares | othersPieces);
-	I256 nwMoves = (knights >> KNIGHT_NW_SHIFT) & (emptySquares | othersPieces);
-	I256 nnwMoves = (knights >> KNIGHT_NNW_SHIFT) & (emptySquares | othersPieces);
+	I256 nneMoves = (knights >> KNIGHT_NNE_SHIFT) & (emptySquares | othersPieces) & ~Board::FILE_A;
+	I256 neMoves = (knights >> KNIGHT_NE_SHIFT) & (emptySquares | othersPieces) & ~Board::FILE_A & ~Board::FILE_B;
+	I256 seMoves = (knights << KNIGHT_SE_SHIFT) & (emptySquares | othersPieces) & ~Board::FILE_A & ~Board::FILE_B;
+	I256 sseMoves = (knights << KNIGHT_SSE_SHIFT) & (emptySquares | othersPieces) & ~Board::FILE_A;
+	I256 sswMoves = (knights << KNIGHT_SSW_SHIFT) & (emptySquares | othersPieces) & ~Board::FILE_N;
+	I256 swMoves = (knights << KNIGHT_SW_SHIFT) & (emptySquares | othersPieces) & ~Board::FILE_M & ~Board::FILE_N;
+	I256 nwMoves = (knights >> KNIGHT_NW_SHIFT) & (emptySquares | othersPieces) & ~Board::FILE_M & ~Board::FILE_N;
+	I256 nnwMoves = (knights >> KNIGHT_NNW_SHIFT) & (emptySquares | othersPieces) & ~Board::FILE_N;
 	std::vector<Move> moves{};
 
 	for (int i = 0, j = board.TOTAL_SQUARES; i < board.TOTAL_SQUARES; i++, j--)
