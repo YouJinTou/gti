@@ -13,6 +13,10 @@ class PositionStringParser
 {
 public:
 	static constexpr const char* INITIAL_STRING = "3rRrNrBrQrKrBrNrR3/3rPrPrPrPrPrPrPrP3/14/bRbP10gPgR/bNbP10gPgN/bBbP10gPgB/bQbP10gPgK/bKbP10gPgQ/bBbP10gPgB/bNbP10gPgN/bRbP10gPgR/14/3yPyPyPyPyPyPyPyP3/3yRyNyByKyQyByNyR3 r rKrQbKbQyKyQgKgQ rbyw 0 1";
+	static constexpr const char* RED = "r";
+	static constexpr const char* BLUE = "b";
+	static constexpr const char* YELLOW = "y";
+	static constexpr const char* GREEN = "g";
 	static constexpr const char* RED_PAWN = "rP";
 	static constexpr const char* RED_KNIGHT = "rN";
 	static constexpr const char* RED_BISHOP = "rB";
@@ -41,24 +45,34 @@ public:
 	static constexpr const char* GREEN_QUEEN = "gQ";
 	static constexpr const char* GREEN_NEW_QUEEN = "gq";
 	static constexpr const char* GREEN_KING = "gK";
+	static constexpr const char* RED_KING_CASTLE = "rK";
+	static constexpr const char* RED_QUEEN_CASTLE = "rQ";
+	static constexpr const char* BLUE_KING_CASTLE = "bK";
+	static constexpr const char* BLUE_QUEEN_CASTLE = "bQ";
+	static constexpr const char* YELLOW_KING_CASTLE = "yK";
+	static constexpr const char* YELLOW_QUEEN_CASTLE = "yQ";
+	static constexpr const char* GREEN_KING_CASTLE = "gK";
+	static constexpr const char* GREEN_QUEEN_CASTLE = "gQ";
 private:
 	const int SLASH_DELIMITED_TOKENS = 14;
 	const int LAST_TOKEN_TOKENS = 6;
-	const std::vector<std::string> PIECES
-	{ 
-		RED_PAWN, RED_KNIGHT, RED_BISHOP, RED_ROOK, RED_QUEEN, RED_NEW_QUEEN, RED_KING,
-		BLUE_PAWN, BLUE_KNIGHT, BLUE_BISHOP, BLUE_ROOK, BLUE_QUEEN, BLUE_NEW_QUEEN, BLUE_KING,
-		YELLOW_PAWN, YELLOW_KNIGHT, YELLOW_BISHOP, YELLOW_ROOK, YELLOW_QUEEN, YELLOW_NEW_QUEEN, YELLOW_KING,
-		GREEN_PAWN, GREEN_KNIGHT, GREEN_BISHOP, GREEN_ROOK, GREEN_QUEEN, GREEN_NEW_QUEEN, GREEN_KING
-	};
 public:
 	Board ParsePositionString(const std::string& positionString);
 	std::string GetPositionString(const Board& board) const;
 private:
 	void SetPosition(const std::string& positionString);
 	void SetSquare(const std::string& matchString, int position);
+	void SetToMove(const std::string& toMoveString);
+	void SetCastlingRights(const std::string& castleString);
+	void SetRemainingPlayers(const std::string& remainingPlayersString);
+	void SetFiftyMoveClock(const std::string& halfMoveClockString);
+	void SetFullMoveNumber(const std::string& fullMoveNumberString);
 private:
 	PlayerColor toMove;
+	int castlingRights;
+	int remainingPlayers;
+	int fiftyMoveClock;
+	int fullMoveNumber;
 	I256 rPawns;
 	I256 rKnights;
 	I256 rBishops;

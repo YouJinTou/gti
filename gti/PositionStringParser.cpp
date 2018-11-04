@@ -127,6 +127,10 @@ void PositionStringParser::SetPosition(const std::string& positionString)
 			throw;
 		}
 	}
+
+	emptySpaceTokens.erase(emptySpaceTokens.begin());
+
+	SetToMove(emptySpaceTokens.at(0));
 }
 
 void PositionStringParser::SetSquare(const std::string& matchString, int position)
@@ -229,4 +233,107 @@ void PositionStringParser::SetSquare(const std::string& matchString, int positio
 	{
 		gKing |= mask;
 	}
+}
+
+void PositionStringParser::SetToMove(const std::string& toMoveString)
+{
+	if (toMoveString == RED)
+	{
+		toMove = PlayerColor::Red;
+	}
+	else if (toMoveString == BLUE)
+	{
+		toMove = PlayerColor::Blue;
+	}
+	else if (toMoveString == YELLOW)
+	{
+		toMove = PlayerColor::Yellow;
+	}
+	else if (toMoveString == GREEN)
+	{
+		toMove = PlayerColor::Green;
+	}
+	else
+	{
+		throw;
+	}
+}
+
+void PositionStringParser::SetCastlingRights(const std::string& castleString)
+{
+	if (castleString.find(RED_KING_CASTLE))
+	{
+		castlingRights |= CastlingRight::RedKingSide;
+	}
+
+	if (castleString.find(RED_QUEEN_CASTLE))
+	{
+		castlingRights |= CastlingRight::RedQueenSide;
+	}
+
+	if (castleString.find(BLUE_KING_CASTLE))
+	{
+		castlingRights |= CastlingRight::BlueKingSide;
+	}
+
+	if (castleString.find(BLUE_KING_CASTLE))
+	{
+		castlingRights |= CastlingRight::BlueKingSide;
+	}
+
+	if (castleString.find(YELLOW_KING_CASTLE))
+	{
+		castlingRights |= CastlingRight::YellowKingSide;
+	}
+
+	if (castleString.find(YELLOW_KING_CASTLE))
+	{
+		castlingRights |= CastlingRight::YellowKingSide;
+	}
+
+	if (castleString.find(GREEN_KING_CASTLE))
+	{
+		castlingRights |= CastlingRight::GreenKingSide;
+	}
+
+	if (castleString.find(GREEN_KING_CASTLE))
+	{
+		castlingRights |= CastlingRight::GreenKingSide;
+	}
+}
+
+void PositionStringParser::SetRemainingPlayers(const std::string& remainingPlayersString)
+{
+	int maximumPlayers = 4;
+
+	if (remainingPlayersString.size() > maximumPlayers)
+	{
+		throw;
+	}
+
+	if (remainingPlayersString.find(RED)) {
+		remainingPlayers |= PlayerColor::Red;
+	}
+
+	if (remainingPlayersString.find(BLUE)) {
+		remainingPlayers |= PlayerColor::Blue;
+	}
+
+	if (remainingPlayersString.find(YELLOW)) {
+		remainingPlayers |= PlayerColor::Yellow;
+	}
+
+	if (remainingPlayersString.find(GREEN)) {
+		remainingPlayers |= PlayerColor::Green;
+	}
+}
+
+void PositionStringParser::SetFiftyMoveClock(const std::string& halfMoveClockString)
+{
+	fiftyMoveClock = std::stoi(halfMoveClockString);
+}
+
+void PositionStringParser::SetFullMoveNumber(const std::string& fullMoveNumberString)
+{
+	fullMoveNumber = std::stoi(fullMoveNumberString);
 }
