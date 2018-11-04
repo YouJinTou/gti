@@ -68,11 +68,11 @@ private:
 	void SetHalfMoveClock(const std::string& halfMoveClockString);
 	void SetFullMoveNumber(const std::string& fullMoveNumberString);
 private:
-	PlayerColor toMove;
-	int castlingRights;
-	int remainingPlayers;
-	int halfMoveClock;
-	int fullMoveNumber;
+	PlayerColor toMove{ PlayerColor::Red };
+	int castlingRights{ 0 };
+	int remainingPlayers{ 0 };
+	int halfMoveClock{ 0 };
+	int fullMoveNumber{ 0 };
 	I256 rPawns;
 	I256 rKnights;
 	I256 rBishops;
