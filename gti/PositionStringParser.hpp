@@ -65,13 +65,13 @@ private:
 	void SetToMove(const std::string& toMoveString);
 	void SetCastlingRights(const std::string& castleString);
 	void SetRemainingPlayers(const std::string& remainingPlayersString);
-	void SetFiftyMoveClock(const std::string& halfMoveClockString);
+	void SetHalfMoveClock(const std::string& halfMoveClockString);
 	void SetFullMoveNumber(const std::string& fullMoveNumberString);
 private:
 	PlayerColor toMove;
 	int castlingRights;
 	int remainingPlayers;
-	int fiftyMoveClock;
+	int halfMoveClock;
 	int fullMoveNumber;
 	I256 rPawns;
 	I256 rKnights;

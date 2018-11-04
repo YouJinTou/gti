@@ -11,7 +11,11 @@ Board PositionStringParser::ParsePositionString(const std::string& positionStrin
 	SetPosition(positionString);
 
 	return Board(
-		PlayerColor::Red,
+		toMove,
+		castlingRights,
+		remainingPlayers,
+		halfMoveClock,
+		fullMoveNumber,
 		rPawns,
 		rKnights,
 		rBishops,
@@ -35,8 +39,7 @@ Board PositionStringParser::ParsePositionString(const std::string& positionStrin
 		gBishops,
 		gRooks,
 		gQueens,
-		gKing
-	);
+		gKing);
 }
 
 std::string PositionStringParser::GetPositionString(const Board& board) const
@@ -328,9 +331,9 @@ void PositionStringParser::SetRemainingPlayers(const std::string& remainingPlaye
 	}
 }
 
-void PositionStringParser::SetFiftyMoveClock(const std::string& halfMoveClockString)
+void PositionStringParser::SetHalfMoveClock(const std::string& halfMoveClockString)
 {
-	fiftyMoveClock = std::stoi(halfMoveClockString);
+	halfMoveClock = std::stoi(halfMoveClockString);
 }
 
 void PositionStringParser::SetFullMoveNumber(const std::string& fullMoveNumberString)
