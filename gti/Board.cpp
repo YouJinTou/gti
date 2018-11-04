@@ -102,6 +102,61 @@ Board::Board(std::string positionString) :
 	gKing = parsedBoard.GetGreenKing();
 }
 
+Board::Board(
+	PlayerColor toMove,
+	I256 rPawns, 
+	I256 rKnights, 
+	I256 rBishops, 
+	I256 rRooks, 
+	I256 rQueens, 
+	I256 rKing, 
+	I256 bPawns, 
+	I256 bKnights, 
+	I256 bBishops, 
+	I256 bRooks, 
+	I256 bQueens, 
+	I256 bKing, 
+	I256 yPawns, 
+	I256 yKnights, 
+	I256 yBishops, 
+	I256 yRooks, 
+	I256 yQueens, 
+	I256 yKing, 
+	I256 gPawns, 
+	I256 gKnights, 
+	I256 gBishops, 
+	I256 gRooks, 
+	I256 gQueens, 
+	I256 gKing) :
+	toMove { toMove },
+	rPawns{ rPawns },
+	rKnights{ rKnights },
+	rBishops{ rBishops },
+	rRooks{ rRooks },
+	rQueens{ rQueens },
+	rKing{ rKing },
+	bPawns{ bPawns },
+	bKnights{ bKnights },
+	bBishops{ bBishops },
+	bRooks{ bRooks },
+	bQueens{ bQueens },
+	bKing{ bKing },
+	yPawns{ yPawns },
+	yKnights{ yKnights },
+	yBishops{ yBishops },
+	yRooks{ yRooks },
+	yQueens{ yQueens },
+	yKing{ yKing },
+	gPawns{ gPawns },
+	gKnights{ gKnights },
+	gBishops{ gBishops },
+	gRooks{ gRooks },
+	gQueens{ gQueens },
+	gKing{ gKing },
+	parser{ PositionStringParser{} }
+{
+}
+
 PlayerColor Board::ToMove() const
 {
 	return toMove;

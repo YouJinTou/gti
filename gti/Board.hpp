@@ -56,6 +56,32 @@ public:
 public:
 	Board();
 	Board(std::string positionString);
+	Board(
+		PlayerColor toMove,
+		I256 rPawns,
+		I256 rKnights,
+		I256 rBishops,
+		I256 rRooks,
+		I256 rQueens,
+		I256 rKing,
+		I256 bPawns,
+		I256 bKnights,
+		I256 bBishops,
+		I256 bRooks,
+		I256 bQueens,
+		I256 bKing,
+		I256 yPawns,
+		I256 yKnights,
+		I256 yBishops,
+		I256 yRooks,
+		I256 yQueens,
+		I256 yKing,
+		I256 gPawns,
+		I256 gKnights,
+		I256 gBishops,
+		I256 gRooks,
+		I256 gQueens,
+		I256 gKing);
 	PlayerColor ToMove() const;
 	void SetToMove(PlayerColor player);
 	I256 GetRed() const;
