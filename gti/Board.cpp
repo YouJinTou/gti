@@ -43,6 +43,19 @@ const I256 Board::RANK_14{ "2040" };
 
 Board::Board() :
 	toMove{ PlayerColor::Red },
+	castlingRights{
+	CastlingRight::RedKingSide |
+	CastlingRight::RedQueenSide |
+	CastlingRight::BlueKingSide |
+	CastlingRight::BlueQueenSide |
+	CastlingRight::YellowKingSide |
+	CastlingRight::YellowQueenSide |
+	CastlingRight::GreenKingSide |
+	CastlingRight::GreenQueenSide },
+	remainingPlayers{
+	PlayerColor::Red | PlayerColor::Blue | PlayerColor::Yellow | PlayerColor::Green },
+	halfMoveClock{ 0 },
+	fullMoveNumber{ 1 },
 	rPawns{ RED_PAWNS_INITIAL },
 	rKnights{ RED_KNIGHTS_INITIAL },
 	rBishops{ RED_BISHOPS_INITIAL },
@@ -76,6 +89,10 @@ Board::Board(std::string positionString) :
 {
 	auto parsedBoard = parser.ParsePositionString(positionString);
 	toMove = parsedBoard.ToMove();
+	castlingRights = parsedBoard.GetCastlingRights();
+	remainingPlayers = parsedBoard.GetRemainingPlayers();
+	halfMoveClock = parsedBoard.GetHalfMoveClock();
+	fullMoveNumber = parsedBoard.GetFullMoveNumber();
 	rPawns = parsedBoard.GetRedPawns();
 	rKnights = parsedBoard.GetRedKnights();
 	rBishops = parsedBoard.GetRedBishops();
@@ -104,62 +121,90 @@ Board::Board(std::string positionString) :
 
 Board::Board(
 	PlayerColor toMove,
-	I256 rPawns, 
-	I256 rKnights, 
-	I256 rBishops, 
-	I256 rRooks, 
-	I256 rQueens, 
-	I256 rKing, 
-	I256 bPawns, 
-	I256 bKnights, 
-	I256 bBishops, 
-	I256 bRooks, 
-	I256 bQueens, 
-	I256 bKing, 
-	I256 yPawns, 
-	I256 yKnights, 
-	I256 yBishops, 
-	I256 yRooks, 
-	I256 yQueens, 
-	I256 yKing, 
-	I256 gPawns, 
-	I256 gKnights, 
-	I256 gBishops, 
-	I256 gRooks, 
-	I256 gQueens, 
+	int castlingRights,
+	int remainingPlayers,
+	int halfMoveClock,
+	int fullMoveNumber,
+	I256 rPawns,
+	I256 rKnights,
+	I256 rBishops,
+	I256 rRooks,
+	I256 rQueens,
+	I256 rKing,
+	I256 bPawns,
+	I256 bKnights,
+	I256 bBishops,
+	I256 bRooks,
+	I256 bQueens,
+	I256 bKing,
+	I256 yPawns,
+	I256 yKnights,
+	I256 yBishops,
+	I256 yRooks,
+	I256 yQueens,
+	I256 yKing,
+	I256 gPawns,
+	I256 gKnights,
+	I256 gBishops,
+	I256 gRooks,
+	I256 gQueens,
 	I256 gKing) :
-	toMove { toMove },
-	rPawns{ rPawns },
-	rKnights{ rKnights },
-	rBishops{ rBishops },
-	rRooks{ rRooks },
-	rQueens{ rQueens },
-	rKing{ rKing },
-	bPawns{ bPawns },
-	bKnights{ bKnights },
-	bBishops{ bBishops },
-	bRooks{ bRooks },
-	bQueens{ bQueens },
-	bKing{ bKing },
-	yPawns{ yPawns },
-	yKnights{ yKnights },
-	yBishops{ yBishops },
-	yRooks{ yRooks },
-	yQueens{ yQueens },
-	yKing{ yKing },
-	gPawns{ gPawns },
-	gKnights{ gKnights },
-	gBishops{ gBishops },
-	gRooks{ gRooks },
-	gQueens{ gQueens },
-	gKing{ gKing },
-	parser{ PositionStringParser{} }
+toMove{ toMove },
+castlingRights{ castlingRights },
+remainingPlayers{ remainingPlayers },
+halfMoveClock{ halfMoveClock },
+fullMoveNumber{ fullMoveNumber },
+rPawns{ rPawns },
+rKnights{ rKnights },
+rBishops{ rBishops },
+rRooks{ rRooks },
+rQueens{ rQueens },
+rKing{ rKing },
+bPawns{ bPawns },
+bKnights{ bKnights },
+bBishops{ bBishops },
+bRooks{ bRooks },
+bQueens{ bQueens },
+bKing{ bKing },
+yPawns{ yPawns },
+yKnights{ yKnights },
+yBishops{ yBishops },
+yRooks{ yRooks },
+yQueens{ yQueens },
+yKing{ yKing },
+gPawns{ gPawns },
+gKnights{ gKnights },
+gBishops{ gBishops },
+gRooks{ gRooks },
+gQueens{ gQueens },
+gKing{ gKing },
+parser{ PositionStringParser{} }
 {
 }
 
 PlayerColor Board::ToMove() const
 {
 	return toMove;
+}
+
+int Board::GetCastlingRights() const
+{
+	return castlingRights;
+}
+
+int Board::GetRemainingPlayers() const
+{
+	return remainingPlayers;
+}
+
+int Board::GetHalfMoveClock() const
+{
+	return halfMoveClock;
+}
+
+int Board::GetFullMoveNumber() const
+{
+	return fullMoveNumber;
 }
 
 void Board::SetToMove(PlayerColor player)

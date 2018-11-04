@@ -58,6 +58,10 @@ public:
 	Board(std::string positionString);
 	Board(
 		PlayerColor toMove,
+		int castlingRights,
+		int remainingPlayers,
+		int halfMoveClock,
+		int fullMoveNumber,
 		I256 rPawns,
 		I256 rKnights,
 		I256 rBishops,
@@ -83,6 +87,10 @@ public:
 		I256 gQueens,
 		I256 gKing);
 	PlayerColor ToMove() const;
+	int GetCastlingRights() const;
+	int GetRemainingPlayers() const;
+	int GetHalfMoveClock() const;
+	int GetFullMoveNumber() const;
 	void SetToMove(PlayerColor player);
 	I256 GetRed() const;
 	I256 GetRedPawns() const;
@@ -116,6 +124,10 @@ public:
 	I256 GetOthersPieces() const;
 private:
 	PlayerColor toMove;
+	int castlingRights;
+	int remainingPlayers;
+	int halfMoveClock;
+	int fullMoveNumber;
 	I256 rPawns;
 	I256 rKnights;
 	I256 rBishops;
