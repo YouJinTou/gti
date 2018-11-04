@@ -4,7 +4,6 @@
 
 #include "PositionStringParser.hpp"
 #include "Board.hpp"
-#include "Utils.hpp"
 
 Board PositionStringParser::ParsePositionString(const std::string& positionString)
 {
@@ -134,6 +133,14 @@ void PositionStringParser::SetPosition(const std::string& positionString)
 	emptySpaceTokens.erase(emptySpaceTokens.begin());
 
 	SetToMove(emptySpaceTokens.at(0));
+
+	SetCastlingRights(emptySpaceTokens.at(1));
+
+	SetRemainingPlayers(emptySpaceTokens.at(2));
+
+	SetHalfMoveClock(emptySpaceTokens.at(3));
+
+	SetFullMoveNumber(emptySpaceTokens.at(4));
 }
 
 void PositionStringParser::SetSquare(const std::string& matchString, int position)
@@ -264,69 +271,73 @@ void PositionStringParser::SetToMove(const std::string& toMoveString)
 
 void PositionStringParser::SetCastlingRights(const std::string& castleString)
 {
-	if (castleString.find(RED_KING_CASTLE))
+	if (castleString.find(RED_KING_CASTLE) != std::string::npos)
 	{
 		castlingRights |= CastlingRight::RedKingSide;
 	}
 
-	if (castleString.find(RED_QUEEN_CASTLE))
+	if (castleString.find(RED_QUEEN_CASTLE) != std::string::npos)
 	{
 		castlingRights |= CastlingRight::RedQueenSide;
 	}
 
-	if (castleString.find(BLUE_KING_CASTLE))
+	if (castleString.find(BLUE_KING_CASTLE) != std::string::npos)
 	{
 		castlingRights |= CastlingRight::BlueKingSide;
 	}
 
-	if (castleString.find(BLUE_KING_CASTLE))
+	if (castleString.find(BLUE_QUEEN_CASTLE) != std::string::npos)
 	{
-		castlingRights |= CastlingRight::BlueKingSide;
+		castlingRights |= CastlingRight::BlueQueenSide;
 	}
 
-	if (castleString.find(YELLOW_KING_CASTLE))
+	if (castleString.find(YELLOW_KING_CASTLE) != std::string::npos)
 	{
 		castlingRights |= CastlingRight::YellowKingSide;
 	}
 
-	if (castleString.find(YELLOW_KING_CASTLE))
+	if (castleString.find(YELLOW_QUEEN_CASTLE) != std::string::npos)
 	{
-		castlingRights |= CastlingRight::YellowKingSide;
+		castlingRights |= CastlingRight::YellowQueenSide;
 	}
 
-	if (castleString.find(GREEN_KING_CASTLE))
+	if (castleString.find(GREEN_KING_CASTLE) != std::string::npos)
 	{
 		castlingRights |= CastlingRight::GreenKingSide;
 	}
 
-	if (castleString.find(GREEN_KING_CASTLE))
+	if (castleString.find(GREEN_QUEEN_CASTLE) != std::string::npos)
 	{
-		castlingRights |= CastlingRight::GreenKingSide;
+		castlingRights |= CastlingRight::GreenQueenSide;
 	}
 }
 
 void PositionStringParser::SetRemainingPlayers(const std::string& remainingPlayersString)
 {
-	int maximumPlayers = 4;
+	size_t maximumPlayers = 4;
 
 	if (remainingPlayersString.size() > maximumPlayers)
 	{
 		throw;
 	}
 
-	if (remainingPlayersString.find(RED)) {
+	if (remainingPlayersString.find(RED) != std::string::npos) 
+	{
 		remainingPlayers |= PlayerColor::Red;
 	}
 
-	if (remainingPlayersString.find(BLUE)) {
+	if (remainingPlayersString.find(BLUE) != std::string::npos) 
+	{
 		remainingPlayers |= PlayerColor::Blue;
 	}
 
-	if (remainingPlayersString.find(YELLOW)) {
+	if (remainingPlayersString.find(YELLOW) != std::string::npos) 
+	{
 		remainingPlayers |= PlayerColor::Yellow;
 	}
 
-	if (remainingPlayersString.find(GREEN)) {
+	if (remainingPlayersString.find(GREEN) != std::string::npos) 
+	{
 		remainingPlayers |= PlayerColor::Green;
 	}
 }
