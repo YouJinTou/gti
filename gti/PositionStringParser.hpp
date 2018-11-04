@@ -12,7 +12,7 @@ class Board;
 class PositionStringParser
 {
 public:
-	static constexpr const char* INITIAL_STRING = "3rRrNrBrQrKrBrNrR3/3rPrPrPrPrPrPrPrP3/14/bRbP10gPgR/bNbP10gPgN/bBbP10gPgB/bQbP10gPgK/bKbP10gPgQ/bBbP10gPgB/bNbP10gPgN/bRbP10gPgR/14/3yPyPyPyPyPyPyPyP3/3yRyNyByKyQyByNyR3 r rKrQbKbQyKyQgKgQ rbyw 0 1";
+	static constexpr const char* INITIAL_STRING = "3rRrNrBrQrKrBrNrR3/3rPrPrPrPrPrPrPrP3/14/bRbP10gPgR/bNbP10gPgN/bBbP10gPgB/bQbP10gPgK/bKbP10gPgQ/bBbP10gPgB/bNbP10gPgN/bRbP10gPgR/14/3yPyPyPyPyPyPyPyP3/3yRyNyByKyQyByNyR3 r rKrQbKbQyKyQgKgQ rbyg 0 1";
 	static constexpr const char* RED = "r";
 	static constexpr const char* BLUE = "b";
 	static constexpr const char* YELLOW = "y";
