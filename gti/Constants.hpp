@@ -3,11 +3,16 @@
 
 enum PlayerColor
 {
-	Red,
-	Blue,
-	Yellow,
-	Green
+	Red = 1,
+	Blue = 2,
+	Yellow = 4,
+	Green = 8
 };
+
+inline PlayerColor operator|(PlayerColor a, PlayerColor b)
+{
+	return static_cast<PlayerColor>(static_cast<int>(a) | static_cast<int>(b));
+}
 
 enum CastlingRight
 {
