@@ -8,6 +8,26 @@
 
 int main()
 {
+	void PrintBoard();
+	void RunTest();
+
+	PrintBoard();
+
+	return 0;
+}
+
+void PrintBoard()
+{
+	Board board{};
+	BoardDrawer drawer{ board };
+
+	drawer.DrawBoard();
+
+	std::getchar();
+}
+
+void RunTest()
+{
 	PositionStringParser parser;
 	Board board = parser.ParsePositionString(PositionStringParser::INITIAL_STRING);
 	auto start = std::chrono::high_resolution_clock::now();
@@ -24,6 +44,4 @@ int main()
 	std::cout << time.count() << std::endl;
 
 	std::getchar();
-
-	return 0;
 }
