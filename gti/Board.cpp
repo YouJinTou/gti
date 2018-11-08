@@ -402,3 +402,8 @@ I256 Board::GetOthersPieces() const
 		throw "Invalid player to move when calling GetOthersPieces().";
 	}
 }
+
+I256 Board::GetAll() const
+{
+	return GetRed() | GetBlue() | GetYellow() | GetGreen();
+}

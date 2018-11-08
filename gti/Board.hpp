@@ -122,6 +122,7 @@ public:
 	I256 GetGreenKing() const;
 	I256 GetEmptySquares() const;
 	I256 GetOthersPieces() const;
+	I256 GetAll() const;
 private:
 	PlayerColor toMove;
 	int castlingRights;
