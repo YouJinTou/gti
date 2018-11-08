@@ -1,4 +1,5 @@
 #include "MoveGenerator.hpp"
+#include "Utils.hpp"
 
 MoveGenerator::MoveGenerator(const Board& board) :
 	board{ board }
@@ -232,4 +233,18 @@ std::vector<Move> MoveGenerator::GetQueenMoves() const
 std::vector<Move> MoveGenerator::GetKingMoves() const
 {
 	return std::vector<Move>();
+}
+
+std::vector<Move> MoveGenerator::GetSliderMoves(I256 slider, I256 mask) const
+{
+	I256 othersPieces = board.GetOthersPieces();
+	I256 occupied = board.GetAll();
+	I256 attacks = ((occupied & mask - (2 * slider)) ^ r((r(occupied & mask) - (2 * r(slider))))) & mask;
+
+	return std::vector<Move>{};
+}
+
+inline I256 r(I256 n)
+{
+	return Utils::ReverseBits(n);
 }

@@ -54,6 +54,7 @@ private:
 		I256 leftCaptureOpposingLine,
 		I256 rightCaptureOpposingLine) const;
 	std::vector<Move> GetKnightMoves(I256 knights, I256 othersPieces) const;
+	std::vector<Move> GetSliderMoves(I256 slider, I256 mask) const;
 };
 
 #endif // !MOVE_GENERATOR_HPP
