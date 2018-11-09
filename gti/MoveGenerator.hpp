@@ -40,6 +40,7 @@ private:
 	static constexpr int KNIGHT_NW_SHIFT = 12;
 	static constexpr int KNIGHT_NNW_SHIFT = 27;
 	static const I256 RANK_MASKS[14];
+	static const I256 FILE_MASKS[14];
 private:
 	const Board& board;
 private:
