@@ -11,7 +11,7 @@ class BoardDrawer
 public:
 	BoardDrawer(const Board& board);
 	void DrawBoard() const;
-	void DrawBitboard(I256 bitboard) const;
+	static void DrawBitboard(I256 bitboard);
 private:
 	static constexpr WORD RED = 4;
 	static constexpr WORD BLUE = 1;
