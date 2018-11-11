@@ -5,13 +5,15 @@
 #include "MoveGenerator.hpp"
 #include "Utils.hpp"
 #include <chrono>
+#include "SliderMovesCache.hpp"
 
 int main()
 {
 	void PrintBoard();
 	void RunTest();
+	void InitializeSliderCache();
 
-	PrintBoard();
+	InitializeSliderCache();
 
 	return 0;
 }
@@ -44,4 +46,11 @@ void RunTest()
 	std::cout << time.count() << std::endl;
 
 	std::getchar();
+}
+
+void InitializeSliderCache()
+{
+	SliderMovesCache cache{};
+
+	cache.GetCache();
 }

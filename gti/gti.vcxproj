@@ -122,6 +122,7 @@
     <ClInclude Include="Constants.hpp" />
     <ClInclude Include="MoveGenerator.hpp" />
     <ClInclude Include="PositionStringParser.hpp" />
+    <ClInclude Include="SliderMovesCache.hpp" />
     <ClInclude Include="Typedefs.hpp" />
     <ClInclude Include="Types.hpp" />
     <ClInclude Include="Utils.hpp" />
@@ -132,6 +133,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MoveGenerator.cpp" />
     <ClCompile Include="PositionStringParser.cpp" />
+    <ClCompile Include="SliderMovesCache.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
