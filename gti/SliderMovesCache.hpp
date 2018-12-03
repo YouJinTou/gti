@@ -23,8 +23,11 @@ private:
 private:
 	static std::map<int, Border> InitializeHorizontalBorders();
 	static std::map<int, Border> InitializeVerticalBorders();
-	static I256 GetHorizontalMask(int horizontalIndex);
-	static I256 GetVerticalMask(int verticalIndex);
+	static I256 GetHorizontalMask(int index);
+	static I256 GetVerticalMask(int index);
+	static I256 GetDiagonalMask(int index, int shift);
+private:
+	static int GetZeroBasedColumnIndex(int index);
 };
 
 #endif // !SLIDER_MOVES_CACHE_HPP

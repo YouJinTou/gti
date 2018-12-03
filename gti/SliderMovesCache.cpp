@@ -35,11 +35,19 @@ std::map<int, std::vector<I256>> SliderMovesCache::GetCache()
 		}
 
 		std::vector<I256> iterationCache;
+		int downLeftUpRightShift = 15;
+		int upLeftDownRightShift = 13;
 
 		iterationCache.push_back(GetHorizontalMask(i));
 		iterationCache.push_back(GetVerticalMask(i));
+		iterationCache.push_back(GetDiagonalMask(i, downLeftUpRightShift));
+		iterationCache.push_back(GetDiagonalMask(i, upLeftDownRightShift));
 
 		cache.insert(std::make_pair(i, iterationCache));
+
+		I256 temp = iterationCache[0] | iterationCache[1] | iterationCache[2] | iterationCache[3];
+
+		BoardDrawer::DrawBitboard(temp);
 	}
 
 	return cache;
@@ -91,31 +99,91 @@ std::map<int, Border> SliderMovesCache::InitializeVerticalBorders()
 	return borders;
 }
 
-I256 SliderMovesCache::GetHorizontalMask(int horizontalIndex)
+I256 SliderMovesCache::GetHorizontalMask(int index)
 {
-	int row = horizontalIndex / Board::SQUARES_PER_SIDE;
+	int row = index / Board::SQUARES_PER_SIDE;
 	auto border = HORIZONTAL_BORDERS.at(row);
 	I256 mask{ 0 };
 
 	for (int i = border.point[0]; i <= border.point[1]; i++)
 	{
+		if (i != index)
+		{
+			mask |= ((I256)1 << (Board::TOTAL_SQUARES - i));
+		}
+	}
+
+	return mask;
+}
+
+I256 SliderMovesCache::GetVerticalMask(int index)
+{
+	int column = SliderMovesCache::GetZeroBasedColumnIndex(index);
+	auto border = VERTICAL_BORDERS.at(column);
+	I256 mask{ 0 };
+
+	for (int i = border.point[0]; i <= border.point[1]; i += Board::SQUARES_PER_SIDE)
+	{
+		if (i != index)
+		{
+			mask |= ((I256)1 << (Board::TOTAL_SQUARES - i));
+		}
+	}
+
+	return mask;
+}
+
+I256 SliderMovesCache::GetDiagonalMask(int index, int shift)
+{
+	I256 mask{ 0 };
+	int initialCol = SliderMovesCache::GetZeroBasedColumnIndex(index);
+	int lastCol = initialCol;
+
+	for (int i = index - shift; i > 0; i -= shift)
+	{
+		if (SliderMovesCache::CORNERS.find(i) != SliderMovesCache::CORNERS.end())
+		{
+			break;
+		}
+
+		int currentCol = SliderMovesCache::GetZeroBasedColumnIndex(i);
+
+		if (std::abs((lastCol - currentCol)) != 1)
+		{
+			break;
+		}
+
+		lastCol = currentCol;
+		mask |= ((I256)1 << (Board::TOTAL_SQUARES - i));
+	}
+
+	lastCol = initialCol;
+
+	for (int i = index + shift; i < Board::TOTAL_SQUARES; i += shift)
+	{
+		if (SliderMovesCache::CORNERS.find(i) != SliderMovesCache::CORNERS.end())
+		{
+			break;
+		}
+
+		int currentCol = SliderMovesCache::GetZeroBasedColumnIndex(i);
+
+		if (std::abs((currentCol - lastCol)) != 1)
+		{
+			break;
+		}
+
+		lastCol = currentCol;
 		mask |= ((I256)1 << (Board::TOTAL_SQUARES - i));
 	}
 
 	return mask;
 }
 
-I256 SliderMovesCache::GetVerticalMask(int verticalIndex)
+int SliderMovesCache::GetZeroBasedColumnIndex(int index)
 {
-	int column = (verticalIndex % Board::SQUARES_PER_SIDE) - 1;
-	column = (column == -1) ? (Board::SQUARES_PER_SIDE - 1) : column;
-	auto border = VERTICAL_BORDERS.at(column);
-	I256 mask{ 0 };
+	int col = (index % Board::SQUARES_PER_SIDE) - 1;
+	col = (col == -1) ? (Board::SQUARES_PER_SIDE - 1) : col;
 
-	for (int i = border.point[0]; i <= border.point[1]; i += Board::SQUARES_PER_SIDE)
-	{
-		mask |= ((I256)1 << (Board::TOTAL_SQUARES - i));
-	}
-
-	return mask;
+	return col;
 }
