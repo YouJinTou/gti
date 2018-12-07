@@ -1,6 +1,5 @@
 #include "SliderMovesCache.hpp"
 #include "Board.hpp"
-#include "BoardDrawer.hpp"
 
 const std::set<int> SliderMovesCache::CORNERS
 {
@@ -46,8 +45,6 @@ std::map<int, std::vector<I256>> SliderMovesCache::GetCache()
 		cache.insert(std::make_pair(i, iterationCache));
 
 		I256 temp = iterationCache[0] | iterationCache[1] | iterationCache[2] | iterationCache[3];
-
-		BoardDrawer::DrawBitboard(temp);
 	}
 
 	return cache;
