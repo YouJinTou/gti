@@ -1,9 +1,11 @@
 #ifndef MOVE_GENERATOR_HPP
 #define MOVE_GENERATOR_HPP
 
+#include <map>
 #include <vector>
 
 #include "Board.hpp"
+#include "SliderMovesCache.hpp"
 #include "Typedefs.hpp"
 #include "Types.hpp"
 
@@ -43,6 +45,9 @@ private:
 	static const I256 FILE_MASKS[14];
 private:
 	const Board& board;
+	const SliderMovesCache cacheGenerator;
+private:
+	std::map<int, std::vector<I256>> cache;
 private:
 	std::vector<Move> GetPawnMoves(
 		I256 pawns,
@@ -56,6 +61,8 @@ private:
 		I256 leftCaptureOpposingLine,
 		I256 rightCaptureOpposingLine) const;
 	std::vector<Move> GetKnightMoves(I256 knights, I256 othersPieces) const;
+	std::vector<Move> GetSliderMoves() const;
+	std::vector<Move> GetSliderMoves(I256 bishops, I256 rooks, I256 queens) const;
 	std::vector<Move> GetSliderMoves(I256 slider, I256 mask) const;
 };
 

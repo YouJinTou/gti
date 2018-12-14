@@ -2,8 +2,10 @@
 #include "Utils.hpp"
 
 MoveGenerator::MoveGenerator(const Board& board) :
-	board{ board }
+	board{ board },
+	cacheGenerator{ SliderMovesCache() }
 {
+	cache = cacheGenerator.GetCache();
 }
 
 std::vector<Move> MoveGenerator::GetMoves() const
@@ -215,24 +217,56 @@ std::vector<Move> MoveGenerator::GetKnightMoves(I256 knights, I256 othersPieces)
 	return moves;
 }
 
-std::vector<Move> MoveGenerator::GetBishopMoves() const
+std::vector<Move> MoveGenerator::GetSliderMoves() const
 {
-	return std::vector<Move>();
+	switch (board.ToMove())
+	{
+	case PlayerColor::Red:
+		return GetSliderMoves(board.GetRedBishops(), board.GetRedRooks(), board.GetRedQueens());
+	case PlayerColor::Blue:
+		return GetSliderMoves(board.GetBlueBishops(), board.GetBlueRooks(), board.GetBlueQueens());
+	case PlayerColor::Yellow:
+		return GetSliderMoves(board.GetYellowBishops(), board.GetYellowRooks(), board.GetYellowQueens());
+	case PlayerColor::Green:
+		return GetSliderMoves(board.GetGreenBishops(), board.GetGreenRooks(), board.GetGreenQueens());
+	default:
+		return std::vector<Move>();
+	}
 }
 
-std::vector<Move> MoveGenerator::GetRookMoves() const
+std::vector<Move> MoveGenerator::GetSliderMoves(I256 bishops, I256 rooks, I256 queens) const
 {
-	return std::vector<Move>();
-}
+	std::vector<Move> moves;
 
-std::vector<Move> MoveGenerator::GetQueenMoves() const
-{
-	return std::vector<Move>();
-}
+	for (int i = 0; i < board.TOTAL_SQUARES; i++)
+	{
+		if (((bishops >> i) & 1) == 1)
+		{
+			auto cachedMoves = cache.find(i)->second;
 
-std::vector<Move> MoveGenerator::GetKingMoves() const
-{
-	return std::vector<Move>();
+			moves.insert(moves.end(), cachedMoves.cbegin(), cachedMoves.cend());
+
+			continue;
+		}
+
+		if (((rooks >> i) & 1) == 1)
+		{
+			auto cachedMoves = cache.find(i)->second;
+
+			moves.insert(moves.end(), cachedMoves.cbegin(), cachedMoves.cend());
+
+			continue;
+		}
+
+		if (((queens >> i) & 1) == 1)
+		{
+			auto cachedMoves = cache.find(i)->second;
+
+			moves.insert(moves.end(), cachedMoves.cbegin(), cachedMoves.cend());
+		}
+	}
+
+	return moves;
 }
 
 inline I256 r(I256 n)
