@@ -16,9 +16,7 @@ public:
 	std::vector<Move> GetMoves() const;
 	std::vector<Move> GetPawnMoves() const;
 	std::vector<Move> GetKnightMoves() const;
-	std::vector<Move> GetBishopMoves() const;
-	std::vector<Move> GetRookMoves() const;
-	std::vector<Move> GetQueenMoves() const;
+	std::vector<Move> GetSliderMoves() const;
 	std::vector<Move> GetKingMoves() const;
 private:
 	static constexpr int RED_PAWN_FORWARD_MOVE_SHIFT = 14;
@@ -61,7 +59,6 @@ private:
 		I256 leftCaptureOpposingLine,
 		I256 rightCaptureOpposingLine) const;
 	std::vector<Move> GetKnightMoves(I256 knights, I256 othersPieces) const;
-	std::vector<Move> GetSliderMoves() const;
 	std::vector<Move> GetSliderMoves(I256 bishops, I256 rooks, I256 queens) const;
 	std::vector<Move> GetSliderMoves(I256 slider, I256 mask) const;
 };

@@ -7,6 +7,8 @@
 #include "../gti/MoveGenerator.cpp"
 #include "../gti/PositionStringParser.hpp"
 #include "../gti/PositionStringParser.cpp"
+#include "../gti/SliderMovesCache.hpp"
+#include "../gti/SliderMovesCache.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 

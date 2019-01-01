@@ -4,6 +4,8 @@
 
 #include "../gti/Board.hpp"
 #include "../gti/MoveGenerator.hpp"
+#include "../gti/Utils.hpp"
+#include "../gti/Utils.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -201,6 +203,18 @@ namespace gtiTests
 				Move{ 140, 124 },
 				Move{ 140, 152 }				
 			};
+
+			ValidateGeneratedMoves(moves, expectedMoves);
+		}
+		TEST_METHOD(GetSliderMoves_InitialBoard_NoMoves)
+		{
+			Board board{};
+
+			board.SetToMove(PlayerColor::Red);
+
+			MoveGenerator generator{ board };
+			auto moves = generator.GetSliderMoves();
+			std::vector<Move> expectedMoves{};
 
 			ValidateGeneratedMoves(moves, expectedMoves);
 		}

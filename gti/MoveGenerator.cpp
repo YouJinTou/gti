@@ -13,16 +13,12 @@ std::vector<Move> MoveGenerator::GetMoves() const
 	std::vector<Move> moves{};
 	auto pawnMoves = GetPawnMoves();
 	auto knightMoves = GetKnightMoves();
-	auto bishopMoves = GetBishopMoves();
-	auto rookMoves = GetRookMoves();
-	auto queenMoves = GetQueenMoves();
+	auto sliderMoves = GetSliderMoves();
 	auto kingMoves = GetKingMoves();
 
 	moves.insert(moves.end(), pawnMoves.cbegin(), pawnMoves.cend());
 	moves.insert(moves.end(), knightMoves.cbegin(), knightMoves.cend());
-	moves.insert(moves.end(), bishopMoves.cbegin(), bishopMoves.cend());
-	moves.insert(moves.end(), rookMoves.cbegin(), rookMoves.cend());
-	moves.insert(moves.end(), queenMoves.cbegin(), queenMoves.cend());
+	moves.insert(moves.end(), sliderMoves.cbegin(), sliderMoves.cend());
 	moves.insert(moves.end(), kingMoves.cbegin(), kingMoves.cend());
 
 	return moves;
@@ -234,35 +230,55 @@ std::vector<Move> MoveGenerator::GetSliderMoves() const
 	}
 }
 
+std::vector<Move> MoveGenerator::GetKingMoves() const
+{
+	return std::vector<Move>();
+}
+
 std::vector<Move> MoveGenerator::GetSliderMoves(I256 bishops, I256 rooks, I256 queens) const
 {
 	std::vector<Move> moves;
 
-	for (int i = 0; i < board.TOTAL_SQUARES; i++)
+	for (int i = 0, j = i + 1; i < board.TOTAL_SQUARES; i++, j++)
 	{
+		I256 slider = 1 << i;
+
 		if (((bishops >> i) & 1) == 1)
 		{
-			auto cachedMoves = cache.find(i)->second;
+			auto sliderMasks = cache.find(j)->second;
+			auto firstDiagonalMoves = GetSliderMoves(slider, sliderMasks[2]);
+			auto secondDiagonalMoves = GetSliderMoves(slider, sliderMasks[3]);
 
-			moves.insert(moves.end(), cachedMoves.cbegin(), cachedMoves.cend());
+			moves.insert(moves.end(), firstDiagonalMoves.cbegin(), firstDiagonalMoves.cend());
+			moves.insert(moves.end(), secondDiagonalMoves.cbegin(), secondDiagonalMoves.cend());
 
 			continue;
 		}
 
 		if (((rooks >> i) & 1) == 1)
 		{
-			auto cachedMoves = cache.find(i)->second;
+			auto sliderMasks = cache.find(j)->second;
+			auto horizontalMoves = GetSliderMoves(slider, sliderMasks[0]);
+			auto verticalMoves = GetSliderMoves(slider, sliderMasks[1]);
 
-			moves.insert(moves.end(), cachedMoves.cbegin(), cachedMoves.cend());
+			moves.insert(moves.end(), horizontalMoves.cbegin(), horizontalMoves.cend());
+			moves.insert(moves.end(), verticalMoves.cbegin(), verticalMoves.cend());
 
 			continue;
 		}
 
 		if (((queens >> i) & 1) == 1)
 		{
-			auto cachedMoves = cache.find(i)->second;
+			auto sliderMasks = cache.find(j)->second;
+			auto horizontalMoves = GetSliderMoves(slider, sliderMasks[0]);
+			auto verticalMoves = GetSliderMoves(slider, sliderMasks[1]);
+			auto firstDiagonalMoves = GetSliderMoves(slider, sliderMasks[2]);
+			auto secondDiagonalMoves = GetSliderMoves(slider, sliderMasks[3]);
 
-			moves.insert(moves.end(), cachedMoves.cbegin(), cachedMoves.cend());
+			moves.insert(moves.end(), firstDiagonalMoves.cbegin(), firstDiagonalMoves.cend());
+			moves.insert(moves.end(), secondDiagonalMoves.cbegin(), secondDiagonalMoves.cend());
+			moves.insert(moves.end(), horizontalMoves.cbegin(), horizontalMoves.cend());
+			moves.insert(moves.end(), verticalMoves.cbegin(), verticalMoves.cend());
 		}
 	}
 
